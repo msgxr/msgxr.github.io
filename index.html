@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammed Sina Gün | Bilgisayar Mühendisi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+
+```
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    :root {
+        --primary: #2563eb;
+        --primary-dark: #1d4ed8;
+        --secondary: #64748b;
+        --accent: #06b6d4;
+        --bg-primary: #0f172a;
+        --bg-secondary: #1e293b;
+        --bg-card: #334155;
+        --text-primary: #f8fafc;
+        --text-secondary: #cbd5e1;
+        --text-muted: #94a3b8;
+        --border: #475569;
+        --gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    
+    body {
+        font-family: 'Inter', sans-serif;
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+    
+    /* Smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Header */
+    .header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(15, 23, 42, 0.85);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 0;
+        z-index: 1000;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .header.scrolled {
+        background: rgba(15, 23, 42, 0.95);
+        box-shadow: var(--shadow-lg);
+    }
+    
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+    
+    .logo {
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--primary);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    
+    .logo:hover {
+        color: var(--accent);
+        transform: translateY(-1px);
+    }
+    
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+    }
+    
+    .nav-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+    }
+    
+    .nav-links a:hover {
+        color: var(--text-primary);
+        background: rgba(37, 99, 235, 0.1);
+    }
+    
+    .nav-links a.active {
+        color: var(--primary);
+        background: rgba(37, 99, 235, 0.15);
+    }
+    
+    /* Mobile Menu */
+    .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--text-primary);
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+    
+    /* Container */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+    
+    /* Hero Section */
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        background: var(--gradient);
+        overflow: hidden;
+    }
+    
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23334155" fill-opacity="0.1"><circle cx="30" cy="30" r="1.5"/></g></svg>');
+        opacity: 0.3;
+    }
+    
+    .hero-content {
+        text-align: center;
+        z-index: 1;
+        animation: fadeInUp 1s ease-out;
+    }
+    
+    .profile-img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 4px solid var(--primary);
+        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+        margin: 0 auto 2rem;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        object-fit: cover;
+    }
+    
+    .profile-img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 8px rgba(37, 99, 235, 0.3);
+    }
+    
+    .hero h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 800;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    .hero .subtitle {
+        font-size: 1.25rem;
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+        font-weight: 500;
+    }
+    
+    .typing-text {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1.1rem;
+        color: var(--accent);
+        margin-bottom: 3rem;
+        min-height: 1.5rem;
+    }
+    
+    .cursor {
+        display: inline-block;
+        background: var(--accent);
+        width: 2px;
+        height: 1.2em;
+        margin-left: 2px;
+        animation: blink 1s infinite;
+    }
+    
+    @keyframes blink {
+        0%, 50% { opacity: 1; }
+        51%, 100% { opacity: 0; }
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Buttons */
+    .btn-group {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.875rem 1.75rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border: none;
+        cursor: pointer;
+        font-size: 0.95rem;
+    }
+    
+    .btn-primary {
+        background: var(--primary);
+        color: white;
+        box-shadow: var(--shadow);
+    }
+    
+    .btn-primary:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+    }
+    
+    .btn-outline {
+        background: transparent;
+        color: var(--text-primary);
+        border: 2px solid var(--border);
+    }
+    
+    .btn-outline:hover {
+        background: var(--bg-secondary);
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+    
+    /* Sections */
+    .section {
+        padding: 6rem 0;
+        position: relative;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+    }
+    
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: var(--primary);
+        border-radius: 2px;
+    }
+    
+    /* About Section */
+    .about {
+        background: var(--bg-secondary);
+    }
+    
+    .about-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+    
+    .about-card {
+        background: var(--bg-card);
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid var(--border);
+    }
+    
+    .about-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-xl);
+        border-color: var(--primary);
+    }
+    
+    .card-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        display: block;
+    }
+    
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+    }
+    
+    .card-text {
+        color: var(--text-secondary);
+        line-height: 1.6;
+    }
+    
+    .card-list {
+        list-style: none;
+        margin-top: 1rem;
+    }
+    
+    .card-list li {
+        padding: 0.25rem 0;
+        color: var(--text-secondary);
+        position: relative;
+        padding-left: 1rem;
+    }
+    
+    .card-list li::before {
+        content: '→';
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+    }
+    
+    /* Skills Section */
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 3rem;
+    }
+    
+    .skill-item {
+        background: var(--bg-card);
+        padding: 1.5rem;
+        border-radius: 12px;
+        text-align: center;
+        transition: all 0.3s ease;
+        border: 1px solid var(--border);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .skill-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 2px;
+        background: var(--primary);
+        transition: all 0.3s ease;
+    }
+    
+    .skill-item:hover::before {
+        left: 0;
+    }
+    
+    .skill-item:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+    }
+    
+    .skill-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        filter: grayscale(0.3);
+        transition: all 0.3s ease;
+    }
+    
+    .skill-item:hover .skill-icon {
+        filter: grayscale(0);
+        transform: scale(1.1);
+    }
+    
+    .skill-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--text-primary);
+    }
+    
+    .skill-desc {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+    }
+    
+    /* Contact Section */
+    .contact {
+        background: var(--bg-secondary);
+    }
+    
+    .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+    
+    .contact-item {
+        background: var(--bg-card);
+        padding: 1.5rem;
+        border-radius: 12px;
+        text-align: center;
+        transition: all 0.3s ease;
+        border: 1px solid var(--border);
+    }
+    
+    .contact-item:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--primary);
+    }
+    
+    .contact-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: var(--primary);
+    }
+    
+    .contact-item h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: var(--text-primary);
+    }
+    
+    .contact-item a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    
+    .contact-item a:hover {
+        color: var(--primary);
+    }
+    
+    /* Footer */
+    .footer {
+        text-align: center;
+        padding: 3rem 0;
+        background: var(--bg-primary);
+        border-top: 1px solid var(--border);
+        color: var(--text-muted);
+    }
+    
+    /* Progress Bar */
+    .progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        z-index: 9999;
+        transition: width 0.3s ease;
+    }
+    
+    /* Scroll to top button */
+    .scroll-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 50px;
+        height: 50px;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+    }
+    
+    .scroll-top.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .scroll-top:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+        }
+        
+        .mobile-menu-btn {
+            display: block;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.1rem;
+        }
+        
+        .section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+        }
+        
+        .btn-group {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .container {
+            padding: 0 1rem;
+        }
+    }
+    
+    /* Loading Animation */
+    .loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--bg-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease;
+    }
+    
+    .loading.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+    
+    .spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid var(--border);
+        border-top: 3px solid var(--primary);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
+```
+
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+```
+<!-- Progress Bar -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Header -->
+<header class="header" id="header">
+    <nav class="nav">
+        <a href="#home" class="logo">MSG</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" class="nav-link active">Ana Sayfa</a></li>
+            <li><a href="#about" class="nav-link">Hakkımda</a></li>
+            <li><a href="#skills" class="nav-link">Yetenekler</a></li>
+            <li><a href="#contact" class="nav-link">İletişim</a></li>
+        </ul>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <img src="https://avatars.githubusercontent.com/u/145281408?v=4" alt="Muhammed Sina Gün" class="profile-img">
+            <h1>Muhammed Sina Gün</h1>
+            <p class="subtitle">Bilgisayar Mühendisliği Öğrencisi</p>
+            <div class="typing-text" id="typingText">
+                <span class="text"></span><span class="cursor"></span>
+            </div>
+            <div class="btn-group">
+                <a href="#about" class="btn btn-primary">Hakkımda</a>
+                <a href="#contact" class="btn btn-outline">İletişim</a>
+                <a href="mailto:muhammedsina47@outlook.com" class="btn btn-outline">E-posta Gönder</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="section about">
+    <div class="container">
+        <h2 class="section-title">Hakkımda</h2>
+        <div class="about-grid">
+            <div class="about-card">
+                <span class="card-icon">🎓</span>
+                <h3 class="card-title">Eğitim</h3>
+                <p class="card-text">
+                    İstanbul Arel Üniversitesi'nde Bilgisayar Mühendisliği ve Anadolu Üniversitesi'nde 
+                    Yönetim Bilişim Sistemleri okuyorum. 2022 yılında Mardin Final Lisesi'nden mezun oldum.
+                </p>
+            </div>
+            <div class="about-card">
+                <span class="card-icon">💻</span>
+                <h3 class="card-title">İlgi Alanları</h3>
+                <ul class="card-list">
+                    <li>Kod Geliştirme & Yazılım Mimarisi</li>
+                    <li>Sistem Tasarımı & Performans Optimizasyonu</li>
+                    <li>Yapay Zeka & Machine Learning</li>
+                    <li>Siber Güvenlik & Network Security</li>
+                </ul>
+            </div>
+            <div class="about-card">
+                <span class="card-icon">🌍</span>
+                <h3 class="card-title">Vizyon</h3>
+                <p class="card-text">
+                    Teknoloji ile gerçek hayat problemlerine çözümler üreten, sürekli öğrenen ve 
+                    gelişen bir yazılım mühendisi olmak. Kendi sistemimi kurup, kodun gücüyle 
+                    geleceği şekillendirmek istiyorum.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="section">
+    <div class="container">
+        <h2 class="section-title">Yetenekler</h2>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <div class="skill-icon">⚡</div>
+                <h3 class="skill-name">Yazılım Geliştirme</h3>
+                <p class="skill-desc">Modern programlama dilleri ve frameworkler ile performanslı uygulamalar</p>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">🔧</div>
+                <h3 class="skill-name">Sistem Tasarımı</h3>
+                <p class="skill-desc">Ölçeklenebilir ve sürdürülebilir sistem mimarileri</p>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">🤖</div>
+                <h3 class="skill-name">Yapay Zeka</h3>
+                <p class="skill-desc">Machine Learning algoritmaları ve AI uygulamaları</p>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">🛡️</div>
+                <h3 class="skill-name">Siber Güvenlik</h3>
+                <p class="skill-desc">Network güvenliği ve güvenlik açığı değerlendirmeleri</p>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">📊</div>
+                <h3 class="skill-name">Veri Analizi</h3>
+                <p class="skill-desc">Büyük veri işleme ve görselleştirme teknolojileri</p>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">☁️</div>
+                <h3 class="skill-name">Cloud Computing</h3>
+                <p class="skill-desc">Bulut platformları ve DevOps uygulamaları</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="section contact">
+    <div class="container">
+        <h2 class="section-title">İletişim</h2>
+        <div class="contact-grid">
+            <div class="contact-item">
+                <div class="contact-icon">📧</div>
+                <h3>E-posta</h3>
+                <a href="mailto:muhammedsina47@outlook.com">muhammedsina47@outlook.com</a>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">💼</div>
+                <h3>LinkedIn</h3>
+                <a href="#" target="_blank">Profesyonel Profil</a>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">💻</div>
+                <h3>GitHub</h3>
+                <a href="#" target="_blank">Kod Deposu</a>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <h3>Konum</h3>
+                <p>İstanbul, Türkiye</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2025 Muhammed Sina Gün. Tüm hakları saklıdır.</p>
+        <p style="margin-top: 0.5rem;">Tasarım ve geliştirme: MSG</p>
+    </div>
+</footer>
+
+<!-- Scroll to Top Button -->
+<button class="scroll-top" id="scrollTop">↑</button>
+
+<script>
+    // Professional Portfolio Application
+    class ProfessionalPortfolio {
+        constructor() {
+            this.init();
+        }
+        
+        init() {
+            this.setupLoading();
+            this.setupNavigation();
+            this.setupScrollEffects();
+            this.setupTypingEffect();
+            this.setupProgressBar();
+            this.setupScrollToTop();
+            this.setupSmoothScrolling();
+            this.setupIntersectionObserver();
+        }
+        
+        setupLoading() {
+            window.addEventListener('load', () => {
+                const loading = document.getElementById('loading');
+                setTimeout(() => {
+                    loading.classList.add('hidden');
+                    setTimeout(() => {
+                        loading.style.display = 'none';
+                    }, 500);
+                }, 1000);
+            });
+        }
+        
+        setupNavigation() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.section, .hero');
+            
+            // Update active nav link based on scroll position
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    if (scrollY >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        }
+        
+        setupScrollEffects() {
+            const header = document.getElementById('header');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        }
+        
+        setupTypingEffect() {
+            const typingElement = document.querySelector('#typingText .text');
+            const texts = [
+                'Kod yazarak geleceği inşa ediyorum',
+                'Sistemlerin arkasındaki mantığı çözüyorum',
+                'Yapay zeka ile sınırları aşıyorum',
+                'Siber güvenlik ile dijital dünyayı koruyorum',
+                'Kendi sistemimi kurdum, şimdi sıra kodda'
+            ];
+            
+            let textIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let isPaused = false;
+            
+            const type = () => {
+                const currentText = texts[textIndex];
+                
+                if (isPaused) {
+                    setTimeout(() => {
+                        isPaused = false;
+                        type();
+                    }, 2000);
+                    return;
+                }
+                
+                if (isDeleting) {
+                    typingElement.textContent = currentText.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typingElement.textContent = currentText.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+                
+                let speed = isDeleting ? 50 : 80;
+                
+                if (!isDeleting && charIndex === currentText.length) {
+                    isPaused = true;
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    textIndex = (textIndex + 1) % texts.length;
+                    speed = 500;
+                }
+                
+                setTimeout(type, speed);
+            };
+            
+            type();
+        }
+        
+        setupProgressBar() {
+            const progressBar = document.getElementById('progressBar');
+            
+            window.addEventListener('scroll', () => {
+                const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                progressBar.style.width = `${Math.min(scrolled, 100)}%`;
+            });
+        }
+                setupScrollToTop() {
+            const scrollTopBtn = document.getElementById('scrollTop');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
+                }
+            });
+
+            scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        setupSmoothScrolling() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        }
+
+        setupIntersectionObserver() {
+            const sections = document.querySelectorAll('.section, .hero');
+            const options = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const id = entry.target.getAttribute('id');
+                    const navLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                    if (entry.isIntersecting) {
+                        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+                        if (navLink) navLink.classList.add('active');
+                    }
+                });
+            }, options);
+
+            sections.forEach(section => observer.observe(section));
+        }
+    }
+
+    // Initialize the app
+    document.addEventListener('DOMContentLoaded', () => {
+        new ProfessionalPortfolio();
+    });
+</script>
+
+</body>
+</html>
