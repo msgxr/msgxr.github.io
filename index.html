@@ -232,10 +232,10 @@
       const doc=document.documentElement;
       if(doc.classList.contains('dark')){doc.classList.remove('dark');doc.classList.add('light');localStorage.setItem(storeKey,'light')}
       else if(doc.classList.contains('light')){doc.classList.remove('light');doc.classList.add('dark');localStorage.setItem(storeKey,'dark')}
-      else{doc.classList.add(window.matchMedia('(prefers-color-scheme: dark)').matches?'light':'dark');localStorage.setItem(storeKey,doc.classList.contains('dark')?'dark':'light')}
-      setIcon();
-    });
-  })();
+        else{doc.classList.add(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');localStorage.setItem(storeKey,doc.classList.contains('dark')?'dark':'light')}
+        setIcon();
+      });
+    })();
 
   // Mobil menü (basit sheet)
   (function mobileMenu(){
