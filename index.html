@@ -14,82 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <style>
-    :root{
-      --primary:#6366f1;--primary-2:#4f46e5;--accent:#06b6d4;--fg:#e2e8f0;--fg-2:#94a3b8;
-      --bg:#0f1020;--bg-2:#171835;--card:#22234a;--border:#374151;--ok:#10b981;--warn:#f59e0b;
-      --radius:16px;--shadow:0 10px 24px rgba(0,0,0,.35);
-      --g1:linear-gradient(135deg,#667eea 0%,#764ba2 100%);--g2:linear-gradient(135deg,#4facfe 0%,#00f2fe 100%);
-    }
-    @media (prefers-color-scheme: light){
-      :root{--bg:#ffffff;--bg-2:#f7f7fb;--card:#ffffff;--fg:#1f2937;--fg-2:#6b7280;--border:#e5e7eb;}
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--fg);line-height:1.6}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    .container{max-width:1200px;margin:auto;padding:0 1.5rem}
-    /* Header */
-    .header{position:sticky;top:0;z-index:1000;background:color-mix(in oklab,var(--bg),transparent 20%);backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid var(--border)}
-    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-    .logo{font:800 1.4rem/1 'JetBrains Mono',monospace;background:var(--g2);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-    .nav-links{display:flex;gap:1.2rem}
-    .nav-links a{padding:.6rem .9rem;border-radius:10px;color:var(--fg-2)}
-    .nav-links a.active,.nav-links a:hover{color:var(--fg);background:rgba(99,102,241,.12)}
-    .menu-btn{display:none;font-size:1.25rem;background:none;border:0;color:var(--fg)}
-    /* Hero */
-    .hero{min-height:92svh;display:grid;place-items:center;position:relative;isolation:isolate}
-    .bg-blobs::before,.bg-blobs::after{content:"";position:absolute;inset:auto;filter:blur(60px);opacity:.18;z-index:-1}
-    .bg-blobs::before{width:38vmax;height:38vmax;background:var(--g1);top:-10vmax;left:-10vmax;border-radius:50%}
-    .bg-blobs::after{width:34vmax;height:34vmax;background:var(--g2);right:-8vmax;bottom:-8vmax;border-radius:50%}
-    .hero-inner{display:grid;justify-items:center;text-align:center;gap:1.25rem;padding-block:3rem}
-    .avatar{width:180px;height:180px;border-radius:50%;padding:4px;background:var(--g1);box-shadow:var(--shadow)}
-    .avatar img{width:100%;height:100%;object-fit:cover;border-radius:inherit}
-    h1{font-weight:800;font-size:clamp(2rem,4vw,3.5rem);letter-spacing:.2px}
-    .subtitle{color:var(--fg-2);font-weight:600}
-    .typing{font-family:'JetBrains Mono',monospace;color:var(--accent);min-height:1.5em}
-    .btns{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;margin-top:.5rem}
-    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.2rem;border-radius:12px;border:1px solid var(--border);transition:.2s}
-    .btn-primary{background:var(--g1);color:#fff;border:0}
-    .btn-outline:hover{background:rgba(99,102,241,.12)}
-    .social{display:flex;gap:.6rem;justify-content:center;margin:.6rem 0 0}
-    .social a{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--border);background:color-mix(in oklab,var(--card),transparent 10%)}
-    .social a:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
-    /* Sections */
-    section{padding:4.5rem 0}
-    .section-title{font-weight:800;font-size:clamp(1.6rem,3vw,2.4rem);text-align:center;margin-bottom:2.2rem;background:var(--g1);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-    .grid{display:grid;gap:1.2rem}
-    /* Cards */
-    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;transition:.25s;position:relative;overflow:hidden}
-    .card:hover{transform:translateY(-4px)}
-    .kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem}
-    .kpi .tile{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.2rem;text-align:center}
-    .kpi .num{font:800 2rem/1 'JetBrains Mono',monospace}
-    .list{list-style:none;display:grid;gap:.5rem}
-    .list li{padding-left:1.2rem;position:relative;color:var(--fg-2)}
-    .list li::before{content:"▸";position:absolute;left:0;color:var(--primary)}
-    /* Skills */
-    .skills{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-    .skill h3{margin:.3rem 0}
-    .muted{color:var(--fg-2)}
-    /* Contact */
-    .contact-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-    .contact a{color:inherit;text-decoration:underline dotted rgba(255,255,255,.25)}
-    /* Footer */
-    footer{border-top:1px solid var(--border);padding:2.5rem 0;text-align:center;color:var(--fg-2)}
-    /* Progress + ScrollTop + Toggle */
-    .progress{position:fixed;inset:0 auto auto 0;height:3px;background:var(--g2);width:0%;z-index:1001}
-    .top-btn{position:fixed;right:1rem;bottom:1rem;width:50px;height:50px;border-radius:50%;border:0;background:var(--g1);color:#fff;display:grid;place-items:center;box-shadow:var(--shadow);opacity:0;visibility:hidden;transition:.2s;z-index:1001}
-    .top-btn.show{opacity:1;visibility:visible}
-    .toggle{position:fixed;right:1rem;top:5.2rem;width:50px;height:50px;border-radius:50%;border:1px solid var(--border);background:var(--card);display:grid;place-items:center;z-index:1001}
-    /* Responsive */
-    @media (max-width:880px){.nav-links{display:none}.menu-btn{display:block}}
-    /* Motion */
-    @media (prefers-reduced-motion: reduce){
-      *{animation:none!important;transition:none!important;scroll-behavior:auto}
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="progress" id="progress"></div>
@@ -102,6 +27,7 @@
       <ul class="nav-links" id="navLinks">
         <li><a class="active" href="#home">Ana Sayfa</a></li>
         <li><a href="#about">Hakkımda</a></li>
+        <li><a href="#experience">Deneyim</a></li>
         <li><a href="#skills">Yetenekler</a></li>
         <li><a href="#stats">İstatistikler</a></li>
         <li><a href="#contact">İletişim</a></li>
@@ -115,15 +41,16 @@
         <img src="https://avatars.githubusercontent.com/u/145281408?v=4" alt="Muhammed Sina Gün portre" loading="eager" decoding="async">
       </div>
       <h1>Muhammed Sina Gün</h1>
-      <p class="subtitle">Bilgisayar Mühendisliği Öğrencisi</p>
+      <p class="subtitle">Bilgisayar ve Yazılım Mühendisliği Öğrencisi</p>
       <p class="typing" id="typing" aria-live="polite"></p>
 
       <div class="social" aria-label="Sosyal bağlantılar">
         <a href="https://linkedin.com/in/muhammed-sina-gün-5335b9290" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
         <a href="https://www.instagram.com/gunmuhammedsina" target="_blank" rel="noreferrer noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://x.com/muhammedsinagun" target="_blank" rel="noreferrer noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://x.com/MuhammedSinaGun" target="_blank" rel="noreferrer noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
         <a href="https://www.facebook.com/share/1ZG5irZZGD/?mibextid=wwXIfr" target="_blank" rel="noreferrer noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
         <a href="https://sosyal.teknofest.app/@muhammedsina" target="_blank" rel="noreferrer noopener" aria-label="TEKNOFEST"><i class="fas fa-rocket"></i></a>
+        <a href="https://github.com/muhammedsinagun" target="_blank" rel="noreferrer noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
       </div>
 
       <div class="btns">
@@ -136,52 +63,108 @@
 
   <section id="about">
     <h2 class="section-title">Hakkımda</h2>
-    <div class="container grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+    <div class="container">
+      <div class="bio-card card">
+        <h3>Kim Ben?</h3>
+        <p>Ben <strong>Muhammed Sina Gün</strong>. Bilgisayar ve Yazılım Mühendisliği öğrencisiyim. Üniversite hayatım boyunca yalnızca teorik bilgiye değil, aynı zamanda bu bilgiyi pratiğe dökmeye ve farklı alanlarda kendimi geliştirmeye önem verdim.</p>
+        
+        <h4>Akademik Başarı</h4>
+        <p class="achievement">📊 <strong>Not Ortalaması: 3.03/4.00</strong></p>
+        
+        <h4>Eğitim Geçmişim</h4>
+        <p>Eğitim sürecimde <strong>Üniversite Matematiği I-II</strong>, <strong>Lineer Cebir</strong>, <strong>Diferansiyel Denklemler</strong>, <strong>Olasılık ve İstatistik</strong>, <strong>Ayrık Matematik</strong>, <strong>Fizik I-II</strong> gibi temel mühendislik dersleri ile analitik düşünme becerilerimi pekiştirdim. Bunun yanı sıra, yazılım geliştirme alanında <strong>Python, C, C++, C#, Java, SQL</strong> gibi dillerde yetkinlik kazandım.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2 class="section-title">Staj ve Profesyonel Deneyim</h2>
+    <div class="container grid" style="grid-template-columns:repeat(auto-fit,minmax(350px,1fr))">
       <article class="card">
-        <h3>Eğitim</h3>
-        <p class="muted">İstanbul Arel Üniversitesi (Bilgisayar Müh.), Anadolu Üniversitesi (YBS). Teori-pratik dengesiyle üretim odaklı ilerliyorum.</p>
+        <h3><i class="fas fa-chart-line"></i> Borsa İstanbul (BIST)</h3>
+        <p class="role">Ar-Ge ve Bilgi Teknolojileri Departmanı</p>
+        <p class="muted">Stajımı Borsa İstanbul bünyesinde yaptım. Burada hem teknik hem de kurumsal becerilerimi geliştirecek birçok projede yer aldım.</p>
       </article>
+      
       <article class="card">
-        <h3>İlgi Alanları</h3>
-        <ul class="list">
-          <li>Full-Stack Web</li><li>Mobil (RN/Flutter)</li><li>AI & ML</li><li>Siber Güvenlik</li>
-          <li>Blockchain</li><li>Bulut & DevOps</li><li>IoT/Embedded</li>
-        </ul>
+        <h3><i class="fas fa-code"></i> BIST100 Reporter</h3>
+        <p class="muted">Java Maven altyapısıyla geliştirilmiş, Candle, ReportService, EmailService gibi modüllerle raporlama ve otomatik e-posta gönderimi yapan sistem tasarladım.</p>
       </article>
+      
       <article class="card">
-        <h3>Vizyon</h3>
-        <p class="muted">Gerçek problemleri teknolojiyle çözen, ölçeklenebilir ve güvenli sistemler kuran bir mühendis olmak.</p>
+        <h3><i class="fas fa-table"></i> ExcelDataManager</h3>
+        <p class="muted">React, Node.js ve XLSX kütüphanesini kullanarak Excel dosyalarını web arayüzüne aktarma, arama, sıralama, filtreleme ve yönetim işlemlerini mümkün kılan uygulama geliştirdim.</p>
       </article>
+      
       <article class="card">
-        <h3>Hedefler</h3>
-        <ul class="list">
-          <li>Kendi teknoloji girişimim</li><li>Açık kaynak katkıları</li><li>AI tabanlı ürünler</li>
-          <li>Konferans konuşmaları</li><li>Mentorluk</li>
-        </ul>
+        <h3><i class="fas fa-database"></i> Veri Yönetimi</h3>
+        <p class="muted">Çoklu kolon sıralama, tarih kolonlarının doğru işlenmesi, binlerce satırdan oluşan tabloların yüksek performansla render edilmesi ve backend tarafında verilerin saklanması üzerine çalışmalar yaptım.</p>
       </article>
     </div>
   </section>
 
   <section id="skills">
-    <h2 class="section-title">Yetenekler &amp; Teknolojiler</h2>
+    <h2 class="section-title">Teknik Yetkinliklerim</h2>
     <div class="container grid skills">
-      <div class="card skill"><h3>Frontend</h3><p class="muted">React, Vue, Angular, TS, HTML/CSS</p></div>
-      <div class="card skill"><h3>Backend</h3><p class="muted">Node.js, Python, Java, C#, PHP</p></div>
-      <div class="card skill"><h3>Veri</h3><p class="muted">PostgreSQL, MySQL, MongoDB, Redis</p></div>
-      <div class="card skill"><h3>Mobil</h3><p class="muted">React Native, Flutter, Android</p></div>
-      <div class="card skill"><h3>AI/ML</h3><p class="muted">Python, TensorFlow, PyTorch</p></div>
-      <div class="card skill"><h3>Güvenlik</h3><p class="muted">Pentest, Ağ Güvenliği</p></div>
-      <div class="card skill"><h3>Bulut & DevOps</h3><p class="muted">AWS, Azure, Docker, K8s, CI/CD</p></div>
-      <div class="card skill"><h3>Blockchain</h3><p class="muted">Smart Contract, Web3</p></div>
+      <div class="card skill">
+        <h3><i class="fas fa-laptop-code"></i> Programlama Dilleri</h3>
+        <p class="muted">Python, C, C++, C#, Java, SQL</p>
+      </div>
+      <div class="card skill">
+        <h3><i class="fas fa-globe"></i> Web Teknolojileri</h3>
+        <p class="muted">React, Vite, Node.js, HTML/CSS, JavaScript</p>
+      </div>
+      <div class="card skill">
+        <h3><i class="fas fa-database"></i> Veri Yönetimi</h3>
+        <p class="muted">Excel otomasyonu, büyük veri tabloları optimizasyonu, PostgreSQL, MySQL, MongoDB</p>
+      </div>
+      <div class="card skill">
+        <h3><i class="fab fa-linux"></i> Sistem Bilgisi</h3>
+        <p class="muted">Linux dağıtımları, sistem yönetimi, temel donanım/mekanik mühendislik</p>
+      </div>
+      <div class="card skill">
+        <h3><i class="fas fa-mobile-alt"></i> Mobil Geliştirme</h3>
+        <p class="muted">React Native, Flutter, Android</p>
+      </div>
+      <div class="card skill">
+        <h3><i class="fas fa-robot"></i> AI & ML</h3>
+        <p class="muted">Python, TensorFlow, PyTorch, Machine Learning</p>
+      </div>
+      <div class="card skill">
+        <h3><i class="fas fa-shield-alt"></i> Siber Güvenlik</h3>
+        <p class="muted">Pentest, Ağ Güvenliği, Güvenlik Testleri</p>
+      </div>
+      <div class="card skill">
+        <h3><i class="fas fa-cloud"></i> Bulut & DevOps</h3>
+        <p class="muted">AWS, Azure, Docker, Kubernetes, CI/CD</p>
+      </div>
     </div>
   </section>
 
   <section id="stats" aria-label="İstatistikler">
     <div class="container kpi">
+      <div class="tile"><div class="num" data-target="3.03">0</div><div class="muted">Not Ortalaması</div></div>
       <div class="tile"><div class="num" data-target="2">0</div><div class="muted">Üniversite Eğitimi</div></div>
       <div class="tile"><div class="num" data-target="15">0</div><div class="muted">Teknoloji Alanı</div></div>
-      <div class="tile"><div class="num" data-target="100">0</div><div class="muted">Öğrenme Motivasyonu</div></div>
       <div class="tile"><div class="num" data-target="24">0</div><div class="muted">Yaş</div></div>
+    </div>
+  </section>
+
+  <section id="vision">
+    <h2 class="section-title">Vizyon ve Hedeflerim</h2>
+    <div class="container grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+      <article class="card">
+        <h3><i class="fas fa-lightbulb"></i> Vizyon</h3>
+        <p class="muted">Mühendislik benim için yalnızca kod yazmak değil; analitik düşünceyi, problem çözme becerisini ve disiplinli çalışmayı hayata entegre etmek demektir. Gerçek problemleri teknolojiyle çözen, ölçeklenebilir ve güvenli sistemler kuran bir mühendis olmak istiyorum.</p>
+      </article>
+      <article class="card">
+        <h3><i class="fas fa-rocket"></i> Gelecek Hedefleri</h3>
+        <p class="muted">Edindiğim bilgi ve tecrübeleri daha büyük ölçekli projelerde değerlendirerek, hem Türkiye'de hem de uluslararası alanda teknolojiye katkı sağlamayı hedefliyorum.</p>
+      </article>
+      <article class="card">
+        <h3><i class="fas fa-heart"></i> İnsani Yaklaşım</h3>
+        <p class="muted">Yalnızca teknik değil; aynı zamanda insani ve düşünsel yönü güçlü bir mühendis olmayı önemsiyorum. Yazı ve felsefeye olan ilgim sayesinde, teknolojiyi yalnızca araç değil; aynı zamanda insan hayatına dokunan bir değer olarak görüyorum.</p>
+      </article>
     </div>
   </section>
 
@@ -192,7 +175,7 @@
       <div class="card"><h3><i class="fab fa-linkedin"></i> LinkedIn</h3><a target="_blank" rel="noreferrer noopener" href="https://linkedin.com/in/muhammed-sina-gün-5335b9290">Profesyonel Profil</a></div>
       <div class="card"><h3><i class="fab fa-github"></i> GitHub</h3><a target="_blank" rel="noreferrer noopener" href="https://github.com/muhammedsinagun">Kod Deposu</a></div>
       <div class="card"><h3><i class="fab fa-instagram"></i> Instagram</h3><a target="_blank" rel="noreferrer noopener" href="https://www.instagram.com/gunmuhammedsina">@gunmuhammedsina</a></div>
-      <div class="card"><h3><i class="fab fa-x-twitter"></i> X</h3><a target="_blank" rel="noreferrer noopener" href="https://x.com/muhammedsinagun">@muhammedsinagun</a></div>
+      <div class="card"><h3><i class="fab fa-x-twitter"></i> X</h3><a target="_blank" rel="noreferrer noopener" href="https://x.com/MuhammedSinaGun">@MuhammedSinaGun</a></div>
       <div class="card"><h3><i class="fa-solid fa-location-dot"></i> Konum</h3><p class="muted">İstanbul, Türkiye</p></div>
     </div>
   </section>
@@ -202,9 +185,10 @@
       <div class="social" aria-label="Alt menü sosyal">
         <a href="https://linkedin.com/in/muhammed-sina-gün-5335b9290" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
         <a href="https://www.instagram.com/gunmuhammedsina" target="_blank" rel="noreferrer noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://x.com/muhammedsinagun" target="_blank" rel="noreferrer noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://x.com/MuhammedSinaGun" target="_blank" rel="noreferrer noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
         <a href="https://www.facebook.com/share/1ZG5irZZGD/?mibextid=wwXIfr" target="_blank" rel="noreferrer noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
         <a href="https://sosyal.teknofest.app/@muhammedsina" target="_blank" rel="noreferrer noopener" aria-label="TEKNOFEST"><i class="fas fa-rocket"></i></a>
+        <a href="https://github.com/muhammedsinagun" target="_blank" rel="noreferrer noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
       </div>
       <p>© 2025 Muhammed Sina Gün • Tüm hakları saklıdır.</p>
       <p class="muted">Made with ❤️ & ☕ • İstanbul</p>
@@ -213,97 +197,6 @@
 
   <button class="top-btn" id="toTop" aria-label="Yukarı dön"><i class="fa-solid fa-arrow-up"></i></button>
 
-  <script defer>
-  // === Yardımcılar ===
-  const $ = sel => document.querySelector(sel);
-  const $$ = sel => document.querySelectorAll(sel);
-
-  // Tema kalıcılığı
-  (function themeInit(){
-    const storeKey='theme';
-    const saved=localStorage.getItem(storeKey);
-    if(saved==='light') document.documentElement.classList.add('light');
-    if(saved==='dark') document.documentElement.classList.add('dark');
-    const btn=$("#themeToggle");
-    const setIcon=()=>btn.innerHTML = document.documentElement.classList.contains('dark')
-      ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
-    setIcon();
-    btn.addEventListener('click',()=>{
-      const doc=document.documentElement;
-      if(doc.classList.contains('dark')){doc.classList.remove('dark');doc.classList.add('light');localStorage.setItem(storeKey,'light')}
-      else if(doc.classList.contains('light')){doc.classList.remove('light');doc.classList.add('dark');localStorage.setItem(storeKey,'dark')}
-      else{doc.classList.add(window.matchMedia('(prefers-color-scheme: dark)').matches?'light':'dark');localStorage.setItem(storeKey,doc.classList.contains('dark')?'dark':'light')}
-      setIcon();
-    });
-  })();
-
-  // Mobil menü (basit sheet)
-  (function mobileMenu(){
-    const btn=$("#menuBtn"), links=$("#navLinks");
-    btn?.addEventListener('click',()=>{
-      if(links.style.display==='flex'){links.style.display=''; btn.innerHTML='<i class="fa-solid fa-bars"></i>';}
-      else{links.style.display='flex'; links.style.flexDirection='column'; links.style.position='absolute'; links.style.right='1rem'; links.style.top='64px'; links.style.background='var(--card)'; links.style.border='1px solid var(--border)'; links.style.borderRadius='12px'; links.style.padding='.6rem'; btn.innerHTML='<i class="fa-solid fa-xmark"></i>';}
-    });
-    document.addEventListener('click',e=>{
-      if(!links.contains(e.target) && !btn.contains(e.target)){links.style.display=''; btn.innerHTML='<i class="fa-solid fa-bars"></i>';}
-    });
-  })();
-
-  // Scroll ilerleme ve yukarı dön
-  (function scrollUI(){
-    const bar=$("#progress"), toTop=$("#toTop");
-    const onScroll=()=>{
-      const h=document.documentElement, pct=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100;
-      bar.style.width=pct.toFixed(1)+'%';
-      if(h.scrollTop>400) toTop.classList.add('show'); else toTop.classList.remove('show');
-      // Scroll-spy
-      const sections=[...$$('main[id], section[id]')];
-      let current='home';
-      sections.forEach(s=>{ if(scrollY >= s.offsetTop-120) current=s.id; });
-      $$('#navLinks a').forEach(a=>{ a.classList.toggle('active', a.getAttribute('href')==='#'+current); });
-    };
-    document.addEventListener('scroll',onScroll,{passive:true});
-    toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-    onScroll();
-  })();
-
-  // Sayı sayaçları
-  (function counters(){
-    const nums=$$('.num');
-    const io=new IntersectionObserver(es=>{
-      es.forEach(e=>{
-        if(!e.isIntersecting) return;
-        const el=e.target; const target=+el.dataset.target||0;
-        let val=0; const step=Math.max(1,Math.ceil(target/80));
-        const tick=()=>{ val+=step; el.textContent = val>=target ? target : val; if(val<target) requestAnimationFrame(tick); };
-        tick(); io.unobserve(el);
-      })
-    },{threshold:.4});
-    nums.forEach(n=>io.observe(n));
-  })();
-
-  // Yazı makinesi
-  (function typing(){
-    const el=$("#typing");
-    const items=[
-      "Kod yazarak geleceği inşa ediyorum 🚀",
-      "AI ile sınırları aşıyorum 🤖",
-      "Güvenli ve ölçeklenebilir sistemler kuruyorum 🛡️",
-      "Full-stack çözümler üretirim 💻",
-      "Bulutta sürdürülebilir mimariler ☁️"
-    ];
-    let i=0,j=0,del=false,wait=0;
-    const type=()=>{
-      if(wait>0){wait--;return setTimeout(type,30);}
-      const t=items[i];
-      j += del ? -1 : 1;
-      el.textContent = t.slice(0,j);
-      if(!del && j===t.length){del=true;wait=70}
-      if(del && j===0){del=false;i=(i+1)%items.length;wait=20}
-      setTimeout(type, del?18:36);
-    };
-    type();
-  })();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
