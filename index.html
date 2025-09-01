@@ -2,189 +2,339 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Muhammed Sina Gün | Bilgisayar Mühendisi</title>
-  <meta name="description" content="Full-stack, Yapay Zeka, Siber Güvenlik ve Bulut odaklı bilgisayar mühendisi." />
-  <meta name="color-scheme" content="dark light" />
-  <meta property="og:title" content="Muhammed Sina Gün | Bilgisayar Mühendisi" />
-  <meta property="og:description" content="Modern ve ölçeklenebilir yazılım çözümleri." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://avatars.githubusercontent.com/u/145281408?v=4" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammed Sina Gün - Kişisel Dijital Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <div class="progress" id="progress"></div>
-  <button class="toggle" id="themeToggle" aria-label="Tema değiştir"><i class="fa-solid fa-moon"></i></button>
+    <!-- Header ve Navigasyon -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <a href="#home">msgxr</a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link">Ana Sayfa</a></li>
+                <li><a href="#about" class="nav-link">Hakkımda</a></li>
+                <li><a href="#projects" class="nav-link">Projeler</a></li>
+                <li><a href="#skills" class="nav-link">Yetenekler</a></li>
+                <li><a href="#contact" class="nav-link">İletişim</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
 
-  <header class="header" id="hdr">
-    <nav class="nav container" aria-label="Ana menü">
-      <a href="#home" class="logo">MSG</a>
-      <button class="menu-btn" id="menuBtn" aria-label="Menü"><i class="fa-solid fa-bars"></i></button>
-      <ul class="nav-links" id="navLinks">
-        <li><a class="active" href="#home">Ana Sayfa</a></li>
-        <li><a href="#about">Hakkımda</a></li>
-        <li><a href="#experience">Deneyim</a></li>
-        <li><a href="#skills">Yetenekler</a></li>
-        <li><a href="#stats">İstatistikler</a></li>
-        <li><a href="#contact">İletişim</a></li>
-      </ul>
-    </nav>
-  </header>
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">
+                            Kişisel Dijital Platformuma <span class="highlight">Hoş Geldiniz</span>
+                        </h1>
+                        <p class="hero-description">
+                            Kodun yaratıcılıkla buluştuğu, mühendisliğin gerçek dünya çözümleriyle tanıştığı bir alan.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="#about" class="btn btn-primary">Hakkımda</a>
+                            <a href="#projects" class="btn btn-secondary">Projelerim</a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="code-animation">
+                            <pre id="code-display"></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <main id="home" class="hero bg-blobs">
-    <div class="hero-inner container" role="banner">
-      <div class="avatar" aria-hidden="true">
-        <img src="https://avatars.githubusercontent.com/u/145281408?v=4" alt="Muhammed Sina Gün portre" loading="eager" decoding="async">
-      </div>
-      <h1>Muhammed Sina Gün</h1>
-      <p class="subtitle">Bilgisayar ve Yazılım Mühendisliği Öğrencisi</p>
-      <p class="typing" id="typing" aria-live="polite"></p>
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="section-header">
+                    <h2>👋 Hakkımda</h2>
+                    <p>Bilgisayar Mühendisi olarak tutkularım ve hedeflerim</p>
+                </div>
+                
+                <div class="about-content">
+                    <div class="about-intro">
+                        <p>
+                            Ben <strong>Muhammed Sina Gün</strong>. Bilgisayar ve Yazılım Mühendisliği öğrencisiyim. 
+                            Üniversite hayatım boyunca yalnızca teorik bilgiye değil, aynı zamanda bu bilgiyi pratiğe 
+                            dökmeye ve farklı alanlarda kendimi geliştirmeye önem verdim.
+                        </p>
+                    </div>
 
-      <div class="social" aria-label="Sosyal bağlantılar">
-        <a href="https://x.com/MuhammedSinaGun" target="_blank" rel="noreferrer noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-      </div>
+                    <div class="passions">
+                        <h3>Tutkularım:</h3>
+                        <div class="passion-grid">
+                            <div class="passion-item">
+                                <i class="fas fa-cogs"></i>
+                                <h4>Sistem Mimarisi & Yazılım Optimizasyonu</h4>
+                            </div>
+                            <div class="passion-item">
+                                <i class="fas fa-brain"></i>
+                                <h4>Yapay Zeka ve Makine Öğrenmesi</h4>
+                            </div>
+                            <div class="passion-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <h4>Siber Güvenlik & Ağ Analizi</h4>
+                            </div>
+                            <div class="passion-item">
+                                <i class="fas fa-chart-line"></i>
+                                <h4>Veri Görselleştirme ve Bulut Çözümleri</h4>
+                            </div>
+                        </div>
+                    </div>
 
-      <div class="btns">
-        <a class="btn btn-primary" href="#about"><i class="fa-solid fa-user"></i> Hakkımda</a>
-        <a class="btn btn-outline" href="#contact"><i class="fa-solid fa-envelope"></i> İletişim</a>
-        <a class="btn btn-outline" href="mailto:muhammedsina47@outlook.com"><i class="fa-solid fa-paper-plane"></i> E-posta Gönder</a>
-      </div>
-    </div>
-  </main>
+                    <div class="education">
+                        <h3>Eğitim:</h3>
+                        <div class="education-grid">
+                            <div class="education-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <h4>🎓 Bilgisayar Mühendisliği</h4>
+                                <p>İstanbul Arel Üniversitesi</p>
+                            </div>
+                            <div class="education-item">
+                                <i class="fas fa-chart-bar"></i>
+                                <h4>📊 Yönetim Bilişim Sistemleri</h4>
+                                <p>Anadolu Üniversitesi</p>
+                            </div>
+                        </div>
+                    </div>
 
-  <section id="about">
-    <h2 class="section-title">Hakkımda</h2>
-    <div class="container">
-      <div class="bio-card card">
-        <h3>Kim Ben?</h3>
-        <p>Ben <strong>Muhammed Sina Gün</strong>. Bilgisayar ve Yazılım Mühendisliği öğrencisiyim. Üniversite hayatım boyunca yalnızca teorik bilgiye değil, aynı zamanda bu bilgiyi pratiğe dökmeye ve farklı alanlarda kendimi geliştirmeye önem verdim.</p>
-        
-        <h4>Akademik Başarı</h4>
-        <p class="achievement">📊 <strong>Not Ortalaması: 3.03/4.00</strong></p>
-        
-        <h4>Eğitim Geçmişim</h4>
-        <p>Eğitim sürecimde <strong>Üniversite Matematiği I-II</strong>, <strong>Lineer Cebir</strong>, <strong>Diferansiyel Denklemler</strong>, <strong>Olasılık ve İstatistik</strong>, <strong>Ayrık Matematik</strong>, <strong>Fizik I-II</strong> gibi temel mühendislik dersleri ile analitik düşünme becerilerimi pekiştirdim. Bunun yanı sıra, yazılım geliştirme alanında <strong>Python, C, C++, C#, Java, SQL</strong> gibi dillerde yetkinlik kazandım.</p>
-      </div>
-    </div>
-  </section>
+                    <div class="experience">
+                        <h3>Staj ve Profesyonel Deneyim:</h3>
+                        <div class="experience-item">
+                            <h4>Borsa İstanbul (BIST) - Ar-Ge ve Bilgi Teknolojileri</h4>
+                            <ul>
+                                <li><strong>BIST100 Reporter:</strong> Java Maven altyapısıyla geliştirilmiş raporlama sistemi</li>
+                                <li><strong>ExcelDataManager:</strong> React, Node.js ve XLSX kütüphanesi ile web uygulaması</li>
+                                <li><strong>Veri Yönetimi:</strong> Büyük veri tabloları için yüksek performans optimizasyonları</li>
+                            </ul>
+                        </div>
+                    </div>
 
-  <section id="experience">
-    <h2 class="section-title">Staj ve Profesyonel Deneyim</h2>
-    <div class="container grid" style="grid-template-columns:repeat(auto-fit,minmax(350px,1fr))">
-      <article class="card">
-        <h3><i class="fas fa-chart-line"></i> Borsa İstanbul (BIST)</h3>
-        <p class="role">Ar-Ge ve Bilgi Teknolojileri Departmanı</p>
-        <p class="muted">Stajımı Borsa İstanbul bünyesinde yaptım. Burada hem teknik hem de kurumsal becerilerimi geliştirecek birçok projede yer aldım.</p>
-      </article>
-      
-      <article class="card">
-        <h3><i class="fas fa-code"></i> BIST100 Reporter</h3>
-        <p class="muted">Java Maven altyapısıyla geliştirilmiş, Candle, ReportService, EmailService gibi modüllerle raporlama ve otomatik e-posta gönderimi yapan sistem tasarladım.</p>
-      </article>
-      
-      <article class="card">
-        <h3><i class="fas fa-table"></i> ExcelDataManager</h3>
-        <p class="muted">React, Node.js ve XLSX kütüphanesini kullanarak Excel dosyalarını web arayüzüne aktarma, arama, sıralama, filtreleme ve yönetim işlemlerini mümkün kılan uygulama geliştirdim.</p>
-      </article>
-      
-      <article class="card">
-        <h3><i class="fas fa-database"></i> Veri Yönetimi</h3>
-        <p class="muted">Çoklu kolon sıralama, tarih kolonlarının doğru işlenmesi, binlerce satırdan oluşan tabloların yüksek performansla render edilmesi ve backend tarafında verilerin saklanması üzerine çalışmalar yaptım.</p>
-      </article>
-    </div>
-  </section>
+                    <div class="vision">
+                        <h3>Vizyon ve Hedeflerim:</h3>
+                        <p>
+                            Mühendislik benim için yalnızca kod yazmak değil; analitik düşünceyi, problem çözme becerisini 
+                            ve disiplinli çalışmayı hayata entegre etmek demektir. Gelecekte; edindiğim bilgi ve tecrübeleri 
+                            daha büyük ölçekli projelerde değerlendirerek, hem Türkiye'de hem de uluslararası alanda 
+                            teknolojiye katkı sağlamayı hedefliyorum.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <section id="skills">
-    <h2 class="section-title">Teknik Yetkinliklerim</h2>
-    <div class="container grid skills">
-      <div class="card skill">
-        <h3><i class="fas fa-laptop-code"></i> Programlama Dilleri</h3>
-        <p class="muted">Python, C, C++, C#, Java, SQL</p>
-      </div>
-      <div class="card skill">
-        <h3><i class="fas fa-globe"></i> Web Teknolojileri</h3>
-        <p class="muted">React, Vite, Node.js, HTML/CSS, JavaScript</p>
-      </div>
-      <div class="card skill">
-        <h3><i class="fas fa-database"></i> Veri Yönetimi</h3>
-        <p class="muted">Excel otomasyonu, büyük veri tabloları optimizasyonu, PostgreSQL, MySQL, MongoDB</p>
-      </div>
-      <div class="card skill">
-        <h3><i class="fab fa-linux"></i> Sistem Bilgisi</h3>
-        <p class="muted">Linux dağıtımları, sistem yönetimi, temel donanım/mekanik mühendislik</p>
-      </div>
-      <div class="card skill">
-        <h3><i class="fas fa-mobile-alt"></i> Mobil Geliştirme</h3>
-        <p class="muted">React Native, Flutter, Android</p>
-      </div>
-      <div class="card skill">
-        <h3><i class="fas fa-robot"></i> AI & ML</h3>
-        <p class="muted">Python, TensorFlow, PyTorch, Machine Learning</p>
-      </div>
-      <div class="card skill">
-        <h3><i class="fas fa-shield-alt"></i> Siber Güvenlik</h3>
-        <p class="muted">Pentest, Ağ Güvenliği, Güvenlik Testleri</p>
-      </div>
-      <div class="card skill">
-        <h3><i class="fas fa-cloud"></i> Bulut & DevOps</h3>
-        <p class="muted">AWS, Azure, Docker, Kubernetes, CI/CD</p>
-      </div>
-    </div>
-  </section>
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <div class="section-header">
+                    <h2>🚀 Projelerim</h2>
+                    <p>Gerçek dünya yazılım projeleri ve sistemler</p>
+                </div>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>BIST100 Reporter</h3>
+                            <p>Java Maven altyapısıyla geliştirilmiş, Candle, ReportService, EmailService modülleri içeren otomatik raporlama sistemi.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Java</span>
+                                <span class="tech-tag">Maven</span>
+                                <span class="tech-tag">Email Service</span>
+                            </div>
+                        </div>
+                    </div>
 
-  <section id="stats" aria-label="İstatistikler">
-    <div class="container kpi">
-      <div class="tile"><div class="num" data-target="3.03">0</div><div class="muted">Not Ortalaması</div></div>
-      <div class="tile"><div class="num" data-target="2">0</div><div class="muted">Üniversite Eğitimi</div></div>
-      <div class="tile"><div class="num" data-target="15">0</div><div class="muted">Teknoloji Alanı</div></div>
-      <div class="tile"><div class="num" data-target="21">0</div><div class="muted">Yaş</div></div>
-    </div>
-  </section>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-table"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>ExcelDataManager</h3>
+                            <p>React ve Node.js kullanarak Excel dosyalarını web arayüzüne aktarma, arama, sıralama ve filtreleme uygulaması.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">XLSX</span>
+                            </div>
+                        </div>
+                    </div>
 
-  <section id="vision">
-    <h2 class="section-title">Vizyon ve Hedeflerim</h2>
-    <div class="container grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
-      <article class="card">
-        <h3><i class="fas fa-lightbulb"></i> Vizyon</h3>
-        <p class="muted">Mühendislik benim için yalnızca kod yazmak değil; analitik düşünceyi, problem çözme becerisini ve disiplinli çalışmayı hayata entegre etmek demektir. Gerçek problemleri teknolojiyle çözen, ölçeklenebilir ve güvenli sistemler kuran bir mühendis olmak istiyorum.</p>
-      </article>
-      <article class="card">
-        <h3><i class="fas fa-rocket"></i> Gelecek Hedefleri</h3>
-        <p class="muted">Edindiğim bilgi ve tecrübeleri daha büyük ölçekli projelerde değerlendirerek, hem Türkiye'de hem de uluslararası alanda teknolojiye katkı sağlamayı hedefliyorum.</p>
-      </article>
-      <article class="card">
-        <h3><i class="fas fa-heart"></i> İnsani Yaklaşım</h3>
-        <p class="muted">Yalnızca teknik değil; aynı zamanda insani ve düşünsel yönü güçlü bir mühendis olmayı önemsiyorum. Yazı ve felsefeye olan ilgim sayesinde, teknolojiyi yalnızca araç değil; aynı zamanda insan hayatına dokunan bir değer olarak görüyorum.</p>
-      </article>
-    </div>
-  </section>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Veri Yönetimi Sistemleri</h3>
+                            <p>Çoklu kolon sıralama, tarih işleme ve binlerce satırlık tabloların yüksek performansla render edilmesi.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Backend</span>
+                                <span class="tech-tag">Optimizasyon</span>
+                                <span class="tech-tag">Performans</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <section id="contact" class="contact">
-    <h2 class="section-title">İletişim</h2>
-    <div class="container grid contact-grid">
-      <div class="card"><h3><i class="fa-solid fa-envelope"></i> E-posta</h3><a href="mailto:[YENİ E-POSTA ADRESİ]">[YENİ E-POSTA ADRESİ]</a></div>
-      <div class="card"><h3><i class="fab fa-x-twitter"></i> X (Twitter)</h3><a target="_blank" rel="noreferrer noopener" href="https://x.com/MuhammedSinaGun">@MuhammedSinaGun</a></div>
-      <div class="card"><h3><i class="fa-solid fa-location-dot"></i> Konum</h3><p class="muted">İstanbul, Türkiye</p></div>
-    </div>
-  </section>
+        <!-- Skills Section -->
+        <section id="skills" class="skills">
+            <div class="container">
+                <div class="section-header">
+                    <h2>🧠 Teknik Yetkinlikler</h2>
+                    <p>Kullandığım teknolojiler ve araçlar</p>
+                </div>
 
-  <footer>
-    <div class="container">
-      <div class="social" aria-label="Alt menü sosyal">
-        <a href="https://x.com/MuhammedSinaGun" target="_blank" rel="noreferrer noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-      </div>
-      <p>© 2025 Muhammed Sina Gün • Tüm hakları saklıdır.</p>
-      <p class="muted">Made with ❤️ & ☕ • İstanbul</p>
-    </div>
-  </footer>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-code"></i> Programlama Dilleri</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">C#</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">C</span>
+                            <span class="skill-tag">SQL</span>
+                        </div>
+                    </div>
 
-  <button class="top-btn" id="toTop" aria-label="Yukarı dön"><i class="fa-solid fa-arrow-up"></i></button>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-globe"></i> Web Teknolojileri</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Vite</span>
+                        </div>
+                    </div>
 
-  <script src="script.js"></script>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-tools"></i> Framework & Araçlar</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Streamlit</span>
+                            <span class="skill-tag">Flask</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">Maven</span>
+                            <span class="skill-tag">AI/ML Tools</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fas fa-server"></i> Sistem & Platform</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Linux</span>
+                            <span class="skill-tag">Sistem Yönetimi</span>
+                            <span class="skill-tag">Veri Yönetimi</span>
+                            <span class="skill-tag">Excel Otomasyonu</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="academic-skills">
+                    <h3><i class="fas fa-university"></i> Akademik Temel</h3>
+                    <div class="academic-grid">
+                        <div class="academic-item">Üniversite Matematiği I-II</div>
+                        <div class="academic-item">Lineer Cebir</div>
+                        <div class="academic-item">Diferansiyel Denklemler</div>
+                        <div class="academic-item">Olasılık ve İstatistik</div>
+                        <div class="academic-item">Ayrık Matematik</div>
+                        <div class="academic-item">Fizik I-II</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2>📫 İletişim</h2>
+                    <p>Benimle iletişime geçin ve gelecekteki iş birliklerini keşfedelim</p>
+                </div>
+
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>E-posta</h4>
+                                <a href="mailto:muhammedsina47@outlook.com">muhammedsina47@outlook.com</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <div>
+                                <h4>GitHub</h4>
+                                <a href="https://github.com/msgxr" target="_blank">github.com/msgxr</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="fas fa-code"></i>
+                            <div>
+                                <h4>Motto</h4>
+                                <p>Code with purpose. Engineer with discipline.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form">
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" placeholder="Adınız" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="E-posta Adresiniz" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="subject" name="subject" placeholder="Konu" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" name="message" placeholder="Mesajınız" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Mesaj Gönder</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Muhammed Sina Gün. Tüm hakları saklıdır.</p>
+                <div class="footer-links">
+                    <a href="mailto:muhammedsina47@outlook.com">E-posta</a>
+                    <a href="https://github.com/msgxr" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
