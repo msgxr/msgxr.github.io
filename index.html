@@ -1,380 +1,672 @@
-
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
-  </head>
-  <body>
-    <nav id="desktop-nav">
-      <div class="logo">Muhammed Sina Gün</div>
-      <div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+<html lang="tr" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Muhammed Sina Gün — Bilgisayar Mühendisi, Backend & Yazılım Geliştirici, Yapay Zeka & Otomasyon Uzmanı. Kişisel portföy ve proje vitrin sitesi." />
+  <meta name="keywords"
+    content="Muhammed Sina Gün, portfolio, software engineer, backend developer, AI, Python, Java, React" />
+  <meta name="author" content="Muhammed Sina Gün" />
+  <meta property="og:title" content="Muhammed Sina Gün | Software Engineer Portfolio" />
+  <meta property="og:description"
+    content="Backend & AI developer building data-driven platforms, financial pipelines, and automation tools." />
+  <meta property="og:type" content="website" />
+  <title>Muhammed Sina Gün | Software Engineer</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <!-- Icons via CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Devicons for tech logos -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="mediaqueries.css" />
+</head>
+
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a class="nav-logo" href="#hero">
+        <span class="logo-bracket">&lt;</span>MSG<span class="logo-bracket">/&gt;</span>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about" class="nav-link">Hakkımda</a></li>
+        <li><a href="#skills" class="nav-link">Yetkinlikler</a></li>
+        <li><a href="#projects" class="nav-link">Projeler</a></li>
+        <li><a href="#leadership" class="nav-link">Topluluk</a></li>
+        <li><a href="#contact" class="nav-link">İletişim</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Tema değiştir">
+          <i class="fa-solid fa-moon" id="theme-icon"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menüyü aç">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-    </nav>
-    <nav id="hamburger-nav">
-      <div class="logo">Muhammed Sina Gün</div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <ul>
+        <li><a href="#about" class="nav-link" onclick="closeMobileMenu()">Hakkımda</a></li>
+        <li><a href="#skills" class="nav-link" onclick="closeMobileMenu()">Yetkinlikler</a></li>
+        <li><a href="#projects" class="nav-link" onclick="closeMobileMenu()">Projeler</a></li>
+        <li><a href="#leadership" class="nav-link" onclick="closeMobileMenu()">Topluluk</a></li>
+        <li><a href="#contact" class="nav-link" onclick="closeMobileMenu()">İletişim</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section id="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <p class="hero-greeting fade-in-up" style="animation-delay:0.1s">Merhaba, ben</p>
+        <h1 class="hero-name fade-in-up" style="animation-delay:0.25s">Muhammed Sina Gün</h1>
+        <div class="hero-titles fade-in-up" style="animation-delay:0.4s">
+          <span class="title-static">Bilgisayar Mühendisi | </span>
+          <span class="typed-text" id="typed-text"></span>
+          <span class="typed-cursor">|</span>
         </div>
-        <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        <p class="hero-bio fade-in-up" style="animation-delay:0.55s">
+          İstanbul Arel Üniversitesi Bilgisayar Mühendisliği öğrencisiyim. Veri odaklı web platformları tasarlıyor,
+          finansal veri hatları kuruyor ve otomasyon süreçleri geliştiriyorum. <span class="highlight">2026 yaz
+            dönemi</span> için Yapay Zeka Yazılım Geliştirme alanında stajyer adayıyım.
+        </p>
+        <div class="hero-actions fade-in-up" style="animation-delay:0.7s">
+          <a href="#projects" class="btn btn-primary">
+            <i class="fa-solid fa-code"></i> Projelerimi Gör
+          </a>
+          <a href="./assets/resume-example.pdf" class="btn btn-secondary" download>
+            <i class="fa-solid fa-download"></i> CV İndir
+          </a>
+          <a href="#contact" class="btn btn-ghost">
+            <i class="fa-solid fa-envelope"></i> İletişime Geç
+          </a>
+        </div>
+        <div class="hero-socials fade-in-up" style="animation-delay:0.85s">
+          <a href="https://www.linkedin.com/in/muhammed-sina-gun" target="_blank" rel="noopener" class="social-icon"
+            aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="https://github.com/muhammedsinagun" target="_blank" rel="noopener" class="social-icon"
+            aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="mailto:muhammedsina47@outlook.com" class="social-icon" aria-label="Email">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
         </div>
       </div>
-    </nav>
-    <section id="profile">
-      <div class="section__pic-container">
-        <img src="\assets\about-pic.png" alt="Muhammed Sina Gün profile picture" />
+
+      <div class="hero-visual fade-in-right" style="animation-delay:0.3s">
+        <div class="hero-avatar-wrapper">
+          <div class="hero-avatar-glow"></div>
+          <div class="hero-avatar">
+            <div class="avatar-initials">MSG</div>
+          </div>
+          <!-- Orbiting tech pills -->
+          <div class="orbit orbit-1">
+            <div class="orbit-item"><i class="devicon-python-plain colored"></i></div>
+          </div>
+          <div class="orbit orbit-2">
+            <div class="orbit-item"><i class="devicon-java-plain colored"></i></div>
+          </div>
+          <div class="orbit orbit-3">
+            <div class="orbit-item"><i class="devicon-react-original colored"></i></div>
+          </div>
+          <div class="orbit orbit-4">
+            <div class="orbit-item"><i class="devicon-postgresql-plain colored"></i></div>
+          </div>
+        </div>
       </div>
-      <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Muhammed Sina Gün</h1>
-        <p class="section__text__p2">Computer & Software Engineer</p>
-        <div class="btn-container">
-          <button
-            class="btn btn-color-2"
-            onclick="window.open('./assets/resume-example.pdf')"
-          >
-            Download CV
+    </div>
+
+    <div class="scroll-indicator">
+      <span>Aşağı Kaydır</span>
+      <div class="scroll-arrow">
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">01 / Hakkımda</span>
+        <h2 class="section-title">Beni Tanıyın</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            Sonuç odaklı bir mühendis adayıyım. <strong>Full-stack geliştirme</strong> ve <strong>makine
+              öğrenmesi</strong> konularına tutkuyla yaklaşıyor, gerçek iş problemlerini ölçülebilir çözümlerle
+            karşılıyorum.
+          </p>
+          <p>
+            Finansal veri hatlarından klinik yapay zeka sistemlerine kadar geniş bir yelpazede projeler geliştirdim. Her
+            projeye <em>temiz kod</em>, <em>SOLID prensipler</em> ve <em>ölçeklenebilir mimari</em> anlayışıyla
+            yaklaşıyorum.
+          </p>
+          <p>
+            Teknik derinliği, topluluk liderliğiyle birleştiriyorum — ArelTech Yazılım Kulübü'nde 30+ üyeye atölyeler
+            düzenliyor, eğitim içerikleri üretiyorum.
+          </p>
+
+          <div class="about-stats">
+            <div class="stat-item">
+              <span class="stat-number">5+</span>
+              <span class="stat-label">Tamamlanan Proje</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">30+</span>
+              <span class="stat-label">Topluluk Üyesi</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">3.16</span>
+              <span class="stat-label">GNO / 4.00</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="interests-grid reveal">
+          <h3 class="interests-title">İlgi Alanları</h3>
+          <div class="interest-cards">
+            <div class="interest-card">
+              <div class="interest-icon"><i class="fa-solid fa-lock"></i></div>
+              <h4>Kriptografi</h4>
+              <p>Şifreleme algoritmaları ve güvenli iletişim protokolleri</p>
+            </div>
+            <div class="interest-card">
+              <div class="interest-icon"><i class="fa-solid fa-shapes"></i></div>
+              <h4>Geometrik Şifreleme</h4>
+              <p>Geometriye dayalı orijinal şifreleme sistemleri tasarımı</p>
+            </div>
+            <div class="interest-card">
+              <div class="interest-icon"><i class="fa-solid fa-calculator"></i></div>
+              <h4>Numerik Analiz</h4>
+              <p>Sayısal yöntemler ve hesaplamalı matematik</p>
+            </div>
+            <div class="interest-card">
+              <div class="interest-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <h4>Siber Güvenlik</h4>
+              <p>Saldırı vektörleri, savunma mekanizmaları ve etik hacking</p>
+            </div>
+            <div class="interest-card">
+              <div class="interest-icon"><i class="fa-solid fa-microchip"></i></div>
+              <h4>Gömülü Sistemler</h4>
+              <p>Donanım-yazılım entegrasyonu ve düşük seviye programlama</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">02 / Yetkinlikler</span>
+        <h2 class="section-title">Teknik Yetkinlikler</h2>
+      </div>
+
+      <div class="skills-categories reveal">
+
+        <!-- Programming Languages -->
+        <div class="skill-category">
+          <h3 class="skill-cat-title"><i class="fa-solid fa-terminal"></i> Programlama Dilleri</h3>
+          <div class="skill-items">
+            <div class="skill-item">
+              <i class="devicon-python-plain colored"></i>
+              <span>Python</span>
+            </div>
+            <div class="skill-item">
+              <i class="devicon-java-plain colored"></i>
+              <span>Java</span>
+            </div>
+            <div class="skill-item">
+              <i class="devicon-c-plain colored"></i>
+              <span>C</span>
+            </div>
+            <div class="skill-item">
+              <i class="devicon-cplusplus-plain colored"></i>
+              <span>C++</span>
+            </div>
+            <div class="skill-item">
+              <i class="devicon-csharp-plain colored"></i>
+              <span>C#</span>
+            </div>
+            <div class="skill-item">
+              <i class="devicon-javascript-plain colored"></i>
+              <span>JavaScript</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Frontend -->
+        <div class="skill-category">
+          <h3 class="skill-cat-title"><i class="fa-solid fa-paintbrush"></i> Frontend</h3>
+          <div class="skill-items">
+            <div class="skill-item">
+              <i class="devicon-react-original colored"></i>
+              <span>React</span>
+            </div>
+            <div class="skill-item">
+              <i class="devicon-html5-plain colored"></i>
+              <span>HTML5</span>
+            </div>
+            <div class="skill-item">
+              <i class="devicon-css3-plain colored"></i>
+              <span>CSS3</span>
+            </div>
+            <div class="skill-item">
+              <i class="devicon-sass-original colored"></i>
+              <span>SASS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Backend -->
+        <div class="skill-category">
+          <h3 class="skill-cat-title"><i class="fa-solid fa-server"></i> Backend</h3>
+          <div class="skill-items">
+            <div class="skill-item">
+              <i class="devicon-nodejs-plain colored"></i>
+              <span>Node.js</span>
+            </div>
+            <div class="skill-item">
+              <i class="devicon-express-original"></i>
+              <span>Express.js</span>
+            </div>
+            <div class="skill-item">
+              <div class="custom-icon si-icon">St</div>
+              <span>Streamlit</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Databases & Tools -->
+        <div class="skill-category">
+          <h3 class="skill-cat-title"><i class="fa-solid fa-database"></i> Veritabanı &amp; Araçlar</h3>
+          <div class="skill-items">
+            <div class="skill-item">
+              <i class="devicon-postgresql-plain colored"></i>
+              <span>PostgreSQL</span>
+            </div>
+            <div class="skill-item">
+              <i class="devicon-mysql-plain colored"></i>
+              <span>MySQL</span>
+            </div>
+            <div class="skill-item">
+              <i class="devicon-git-plain colored"></i>
+              <span>Git</span>
+            </div>
+            <div class="skill-item">
+              <i class="devicon-linux-plain"></i>
+              <span>Linux</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concepts -->
+        <div class="skill-category skill-category--wide">
+          <h3 class="skill-cat-title"><i class="fa-solid fa-lightbulb"></i> Mimari &amp; Metodoloji</h3>
+          <div class="skill-items skill-items--tags">
+            <span class="skill-tag">OOP</span>
+            <span class="skill-tag">RESTful API</span>
+            <span class="skill-tag">SOLID Prensipleri</span>
+            <span class="skill-tag">MVC Mimarisi</span>
+            <span class="skill-tag">BIST Finansal API</span>
+            <span class="skill-tag">Excel Otomasyonu</span>
+            <span class="skill-tag">Veri Hattı (ETL)</span>
+            <span class="skill-tag">XAI / Açıklanabilir YZ</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">03 / Projeler</span>
+        <h2 class="section-title">Öne Çıkan Projeler</h2>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Project 1: TEKNOFEST -->
+        <div class="project-card featured reveal">
+          <div class="project-card-top">
+            <div class="project-icon"><i class="fa-solid fa-brain"></i></div>
+            <div class="project-links">
+              <a href="https://github.com/muhammedsinagun" target="_blank" rel="noopener" aria-label="GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <div class="project-badge-featured">🏆 TEKNOFEST</div>
+          <h3 class="project-title">Klinik Karar Destek Sistemi <span class="project-xai">(XAI)</span></h3>
+          <p class="project-desc">
+            Takım kaptanı ve algoritma lideri olarak jinekolojide tıbbi görüntüleri analiz eden <strong>Açıklanabilir
+              Yapay Zeka (XAI)</strong> tabanlı klinik karar destek sistemi geliştirdim. Modelin kararlarını hekimlere
+            şeffaf biçimde açıklayan bir arayüz tasarladım.
+          </p>
+          <div class="project-tags">
+            <span class="badge badge-blue">Python</span>
+            <span class="badge badge-purple">XAI / SHAP</span>
+            <span class="badge badge-green">TensorFlow</span>
+            <span class="badge badge-orange">Computer Vision</span>
+            <span class="badge badge-red">Streamlit</span>
+          </div>
+        </div>
+
+        <!-- Project 2: BIST100 -->
+        <div class="project-card reveal">
+          <div class="project-card-top">
+            <div class="project-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <div class="project-links">
+              <a href="https://github.com/muhammedsinagun/bist100-reporter" target="_blank" rel="noopener"
+                aria-label="GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">BIST100 Finansal Raporlayıcı</h3>
+          <p class="project-desc">
+            Borsa İstanbul verilerini entegre eden otomatik veri hattı. Binlerce kaydı işliyor ve manuel raporlama
+            süresini <span class="metric">%70 azalttı.</span>
+          </p>
+          <div class="project-tags">
+            <span class="badge badge-blue">Python</span>
+            <span class="badge badge-teal">PostgreSQL</span>
+            <span class="badge badge-orange">BIST API</span>
+            <span class="badge badge-green">ETL Pipeline</span>
+          </div>
+        </div>
+
+        <!-- Project 3: Excel DataManager -->
+        <div class="project-card reveal">
+          <div class="project-card-top">
+            <div class="project-icon"><i class="fa-solid fa-table"></i></div>
+            <div class="project-links">
+              <a href="https://github.com/muhammedsinagun/ExcelDataManager" target="_blank" rel="noopener"
+                aria-label="GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">Excel DataManager</h3>
+          <p class="project-desc">
+            Kurumsal Excel iş akışlarını web platformuna taşıyan uçtan uca otomasyon çözümü. Operasyonel yükü <span
+              class="metric">%60 azalttı.</span>
+          </p>
+          <div class="project-tags">
+            <span class="badge badge-blue">Python</span>
+            <span class="badge badge-yellow">openpyxl</span>
+            <span class="badge badge-red">Streamlit</span>
+            <span class="badge badge-purple">Web Automation</span>
+          </div>
+        </div>
+
+        <!-- Project 4: Stok Yönetim -->
+        <div class="project-card reveal">
+          <div class="project-card-top">
+            <div class="project-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+            <div class="project-links">
+              <a href="https://github.com/muhammedsinagun" target="_blank" rel="noopener" aria-label="GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">Stok Yönetim Sistemi</h3>
+          <p class="project-desc">
+            SOLID prensipleriyle geliştirilmiş çok katmanlı, <strong>rol tabanlı</strong> kurumsal stok takip sistemi.
+            OOP ile temiz katmanlı mimari uygulandı.
+          </p>
+          <div class="project-tags">
+            <span class="badge badge-orange">Java</span>
+            <span class="badge badge-teal">MySQL</span>
+            <span class="badge badge-purple">SOLID</span>
+            <span class="badge badge-blue">OOP</span>
+          </div>
+        </div>
+
+        <!-- Project 5: Araç Kiralama -->
+        <div class="project-card reveal">
+          <div class="project-card-top">
+            <div class="project-icon"><i class="fa-solid fa-car"></i></div>
+            <div class="project-links">
+              <a href="https://github.com/muhammedsinagun" target="_blank" rel="noopener" aria-label="GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">Araç Kiralama Platformu</h3>
+          <p class="project-desc">
+            Temiz <strong>MVC mimarisi</strong> ile müşteri yönetimi ve araç takibi yapan tam özellikli kiralama
+            platformu.
+          </p>
+          <div class="project-tags">
+            <span class="badge badge-orange">Java</span>
+            <span class="badge badge-teal">MySQL</span>
+            <span class="badge badge-green">MVC</span>
+            <span class="badge badge-blue">OOP</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LEADERSHIP / EDUCATION ============ -->
+  <section id="leadership">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">04 / Liderlik &amp; Eğitim</span>
+        <h2 class="section-title">Topluluk &amp; Akademi</h2>
+      </div>
+
+      <div class="timeline">
+
+        <!-- ArelTech -->
+        <div class="timeline-item reveal">
+          <div class="timeline-marker">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-title">ArelTech — Yazılım Kulübü</h3>
+                <span class="timeline-sub">Çekirdek Üye / Teknik Lider / Sosyal Medya Yöneticisi</span>
+              </div>
+              <span class="timeline-date">2023 — Devam Ediyor</span>
+            </div>
+            <ul class="timeline-list">
+              <li><i class="fa-solid fa-check-circle"></i> 30+ üyeye <strong>Big-O Analizi</strong>, Bilgisayar Mimarisi
+                ve Siber Güvenlik atölyeleri düzenledim.</li>
+              <li><i class="fa-solid fa-check-circle"></i> Eğitim içerikleri üreterek dijital etkileşimi ve kulüp
+                büyümesini destekledim.</li>
+              <li><i class="fa-solid fa-check-circle"></i> Teknik lider olarak proje geliştirme süreçlerini yönettim.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="timeline-item reveal">
+          <div class="timeline-marker">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-title">İstanbul Arel Üniversitesi</h3>
+                <span class="timeline-sub">B.Sc. Bilgisayar Mühendisliği</span>
+              </div>
+              <span class="timeline-date">2024 — 2028 (Beklenen)</span>
+            </div>
+            <div class="edu-stats">
+              <div class="edu-stat">
+                <span class="edu-stat-num">3.16</span>
+                <span class="edu-stat-label">GNO / 4.00</span>
+              </div>
+              <div class="edu-stat">
+                <span class="edu-stat-num">Eylül 2028</span>
+                <span class="edu-stat-label">Beklenen Mezuniyet</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="timeline-item reveal">
+          <div class="timeline-marker">
+            <i class="fa-solid fa-certificate"></i>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-title">Sertifikalar</h3>
+                <span class="timeline-sub">Profesyonel Gelişim</span>
+              </div>
+            </div>
+            <div class="cert-list">
+              <div class="cert-item">
+                <div class="cert-logo"><i class="fa-solid fa-shield"></i></div>
+                <div>
+                  <strong>Cisco Siber Güvenlik Temelleri</strong>
+                  <span class="cert-year">2024</span>
+                </div>
+              </div>
+              <div class="cert-item">
+                <div class="cert-logo"><i class="devicon-python-plain colored"></i></div>
+                <div>
+                  <strong>Python için Programlama Kavramları</strong>
+                  <span class="cert-year">2023</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">05 / İletişim</span>
+        <h2 class="section-title">Birlikte Çalışalım</h2>
+      </div>
+
+      <p class="contact-intro reveal">
+        Projelerinizde birlikte çalışmak veya <span class="highlight">staj fırsatları</span> için benimle iletişime
+        geçebilirsiniz.
+      </p>
+
+      <div class="contact-layout">
+        <!-- Contact Info -->
+        <div class="contact-info reveal">
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div>
+              <span class="contact-info-label">Email</span>
+              <a href="mailto:muhammedsina47@outlook.com" class="contact-info-value">muhammedsina47@outlook.com</a>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="fa-solid fa-phone"></i></div>
+            <div>
+              <span class="contact-info-label">Telefon</span>
+              <a href="tel:+905437245985" class="contact-info-value">+90 543 724 59 85</a>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <span class="contact-info-label">Konum</span>
+              <span class="contact-info-value">İstanbul, Türkiye</span>
+            </div>
+          </div>
+
+          <div class="contact-socials">
+            <a href="https://www.linkedin.com/in/muhammed-sina-gun" target="_blank" rel="noopener"
+              class="social-icon social-icon--large">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/muhammedsinagun" target="_blank" rel="noopener"
+              class="social-icon social-icon--large">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="mailto:muhammedsina47@outlook.com" class="social-icon social-icon--large">
+              <i class="fa-solid fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <form class="contact-form reveal" id="contact-form">
+          <div class="form-group">
+            <label for="contact-name">Adınız</label>
+            <input type="text" id="contact-name" name="name" placeholder="Adınızı girin..." required />
+          </div>
+          <div class="form-group">
+            <label for="contact-email">Email Adresiniz</label>
+            <input type="email" id="contact-email" name="email" placeholder="ornek@mail.com" required />
+          </div>
+          <div class="form-group">
+            <label for="contact-message">Mesajınız</label>
+            <textarea id="contact-message" name="message" rows="5" placeholder="Mesajınızı yazın..."
+              required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">
+            <i class="fa-solid fa-paper-plane"></i> Mesaj Gönder
           </button>
-          <button class="btn btn-color-1" onclick="location.href='./#contact'">
-            Contact Info
-          </button>
-        </div>
-        <div id="socials-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="location.href='https://www.linkedin.com/in/muhammed-sina-gun'"
-          />
-          <img
-            src="./assets/github.png"
-            alt="My Github profile"
-            class="icon"
-            onclick="location.href='https://github.com/muhammedsinagun'"
-          />
-        </div>
+          <div id="form-status" class="form-status"></div>
+        </form>
       </div>
-    </section>
-    <section id="about">
-      <p class="section__text__p1">Get To Know More</p>
-      <h1 class="title">About Me</h1>
-      <div class="section-container">
-        <div class="section__pic-container">
-          <img
-            src="./assets/profile-pic-1.png"
-            alt="Profile picture"
-            class="about-pic"
-          />
-        </div>
-        <div class="about-details-container">
-          <div class="about-containers">
-            <div class="details-container">
-              <img
-                src="./assets/experience.png"
-                alt="Experience icon"
-                class="icon"
-              />
-              <h3>Experience</h3>
-              <p>R&D / Data Projects<br />BIST & Web Apps</p>
-            </div>
-            <div class="details-container">
-              <img
-                src="./assets/education.png"
-                alt="Education icon"
-                class="icon"
-              />
-              <h3>Education</h3>
-              <p>B.Sc. Computer Engineering<br />(Continuing)</p>
-            </div>
-          </div>
-          <div class="text-container">
-            <p>
-              Java, Python ve React ekseninde kurumsal yazılımlar, veri odaklı web arayüzleri ve otomasyonlar geliştiriyorum.
-              Finansal veri akışları, Excel-to-Web çözümleri ve raporlama araçları üzerinde çalıştım; Git, SQL ve modern JS
-              araç zinciriyle üretim kalitesinde kod yazmaya odaklanıyorum. Disiplin, sade tasarım ve performans benim için öncelik.
-            </p>
-          </div>
-        </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer id="footer">
+    <div class="container footer-inner">
+      <a class="nav-logo" href="#hero">
+        <span class="logo-bracket">&lt;</span>MSG<span class="logo-bracket">/&gt;</span>
+      </a>
+      <p class="footer-text">© 2026 Muhammed Sina Gün. Tüm hakları saklıdır.</p>
+      <div class="footer-links">
+        <a href="#about" class="footer-link">Hakkımda</a>
+        <a href="#projects" class="footer-link">Projeler</a>
+        <a href="#contact" class="footer-link">İletişim</a>
       </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#experience'"
-      />
-    </section>
-    <section id="experience">
-      <p class="section__text__p1">Explore My</p>
-      <h1 class="title">Experience</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container">
-            <h2 class="experience-sub-title">Frontend Development</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>HTML</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>CSS</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>SASS</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>JavaScript</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>TypeScript</h3>
-                  <p>Basic</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Material UI</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-            </div>
-          </div>
-          <div class="details-container">
-            <h2 class="experience-sub-title">Frontend Development</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>PostgreSQL</h3>
-                  <p>Basic</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Node JS</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Express JS</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Git</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#projects'"
-      />
-    </section>
-    <section id="projects">
-      <p class="section__text__p1">Browse My Recent</p>
-      <h1 class="title">Projects</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project-1.png"
-                alt="ExcelDataManager"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">ExcelDataManager</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/muhammedsinagun/ExcelDataManager'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/muhammedsinagun/ExcelDataManager'"
-              >
-                Live Demo
-              </button>
-            </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project-2.png"
-                alt="BIST100 Reporter"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">BIST100 Reporter</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/msgxr/password-generator-cli'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/muhammedsinagun/bist100-reporter'"
-              >
-                Live Demo
-              </button>
-            </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project-3.png"
-                alt="Java BIST Client"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Java BIST Client</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/muhammedsinagun/java-bist-client'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/muhammedsinagun/java-bist-client'"
-              >
-                Live Demo
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#contact'"
-      />
-    </section>
-    <section id="contact">
-      <p class="section__text__p1">Get in Touch</p>
-      <h1 class="title">Contact Me</h1>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img
-            src="./assets/email.png"
-            alt="Email icon"
-            class="icon contact-icon email-icon"
-          />
-          <p><a href="mailto:muhammedsina47@outlook.com">muhammedsina47@outlook.com</a></p>
-        </div>
-        <div class="contact-info-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="LinkedIn icon"
-            class="icon contact-icon"
-          />
-          <p><a href="https://tr.linkedin.com/in/muhammedsina">LinkedIn</a></p>
-        </div>
-      </div>
-    </section>
-    <footer>
-      <nav>
-        <div class="nav-links-container">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
-      <p>Copyright &#169; 2025 Muhammed Sina Gün. All Rights Reserved.</p>
-    </footer>
-    <script src="script.js"></script>
-  </body>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
 </html>

@@ -1,78 +1,224 @@
+/* ============================================
+   SCRIPT.JS — Portfolio Interactivity
+   Muhammed Sina Gün | msgxr.github.io
+   ============================================ */
 
-// Gelişmiş Hamburger Menü
-(function initHamburgerMenu() {
-  const menu  = document.querySelector(".menu-links");
-  const icon  = document.querySelector(".hamburger-icon");
-  if (!menu || !icon) return;
+// ─── THEME TOGGLE ─────────────────────────────
+const html = document.documentElement;
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
 
-  // ARIA
-  icon.setAttribute("aria-controls", "primary-menu");
-  menu.id = menu.id || "primary-menu";
-  icon.setAttribute("aria-expanded", "false");
-  icon.setAttribute("aria-label", "Menu");
+function applyTheme(theme) {
+  html.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+  if (theme === 'dark') {
+    themeIcon.className = 'fa-solid fa-moon';
+  } else {
+    themeIcon.className = 'fa-solid fa-sun';
+  }
+}
 
-  // Odak yönetimi için menü içi odaklanabilirler
-  const focusablesSelector = 'a, button, [tabindex]:not([tabindex="-1"])';
+// Load saved preference
+const savedTheme = localStorage.getItem('theme') || 'dark';
+applyTheme(savedTheme);
 
-  function openMenu() {
-    menu.classList.add("open");
-    icon.classList.add("open");
-    icon.setAttribute("aria-expanded", "true");
+themeToggle.addEventListener('click', () => {
+  const current = html.getAttribute('data-theme');
+  applyTheme(current === 'dark' ? 'light' : 'dark');
+});
 
-    // İlk odak
-    const first = menu.querySelector(focusablesSelector);
-    first && first.focus();
+// ─── HAMBURGER MENU ────────────────────────────
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
 
-    // Dışarı tıkla kapat
-    document.addEventListener("click", onDocClick, { capture: true });
-    // ESC ile kapat
-    document.addEventListener("keydown", onEsc);
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('open');
+});
+
+function closeMobileMenu() {
+  hamburger.classList.remove('active');
+  mobileMenu.classList.remove('open');
+}
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+    closeMobileMenu();
+  }
+});
+
+// ─── NAVBAR SCROLL EFFECT ──────────────────────
+const navbar = document.getElementById('navbar');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  const current = window.scrollY;
+
+  if (current > 80) {
+    navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.4)';
+  } else {
+    navbar.style.boxShadow = 'none';
   }
 
-  function closeMenu() {
-    menu.classList.remove("open");
-    icon.classList.remove("open");
-    icon.setAttribute("aria-expanded", "false");
+  // Hide on scroll down, show on scroll up
+  if (current > lastScroll && current > 300) {
+    navbar.style.transform = 'translateY(-100%)';
+  } else {
+    navbar.style.transform = 'translateY(0)';
+  }
+  lastScroll = Math.max(current, 0);
+});
 
-    document.removeEventListener("click", onDocClick, { capture: true });
-    document.removeEventListener("keydown", onEsc);
-    // İkonu geri odakla
-    icon.focus();
+// ─── TYPED TEXT ANIMATION ─────────────────────
+const typedTexts = [
+  'Backend Geliştirici',
+  'Yapay Zeka Uzmanı',
+  'Otomasyon Mühendisi',
+  'Veri Hattı Mimarı'
+];
+
+let typedIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typedEl = document.getElementById('typed-text');
+
+function typeWriter() {
+  if (!typedEl) return;
+  const currentText = typedTexts[typedIndex];
+
+  if (isDeleting) {
+    typedEl.textContent = currentText.substring(0, charIndex - 1);
+    charIndex--;
+  } else {
+    typedEl.textContent = currentText.substring(0, charIndex + 1);
+    charIndex++;
   }
 
-  function toggleMenu() {
-    menu.classList.contains("open") ? closeMenu() : openMenu();
+  let speed = isDeleting ? 50 : 90;
+
+  if (!isDeleting && charIndex === currentText.length) {
+    speed = 2000; // Pause at end
+    isDeleting = true;
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    typedIndex = (typedIndex + 1) % typedTexts.length;
+    speed = 400;
   }
 
-  function onDocClick(e) {
-    // Menü ve ikon dışı tıklamada kapat
-    if (!menu.contains(e.target) && !icon.contains(e.target)) {
-      closeMenu();
-    }
-  }
+  setTimeout(typeWriter, speed);
+}
 
-  function onEsc(e) {
-    if (e.key === "Escape") closeMenu();
-    // Basit odak tuzağı (Shift+Tab / Tab)
-    if (e.key === "Tab" && menu.classList.contains("open")) {
-      const items = [...menu.querySelectorAll(focusablesSelector)];
-      if (!items.length) return;
-      const first = items[0], last = items[items.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault(); last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault(); first.focus();
+typeWriter();
+
+// ─── SCROLL REVEAL (Intersection Observer) ─────
+const reveals = document.querySelectorAll('.reveal');
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        // Stagger delay for children in the same parent
+        const siblings = entry.target.parentElement.querySelectorAll('.reveal');
+        let delay = 0;
+        siblings.forEach((sib, idx) => {
+          if (sib === entry.target) delay = idx * 80;
+        });
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, delay);
+        revealObserver.unobserve(entry.target);
       }
-    }
+    });
+  },
+  { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+);
+
+reveals.forEach((el) => revealObserver.observe(el));
+
+// ─── ACTIVE NAV LINK ON SCROLL ──────────────────
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+
+const sectionObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        navLinks.forEach((link) => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${entry.target.id}`) {
+            link.classList.add('active-nav');
+          } else {
+            link.classList.remove('active-nav');
+          }
+        });
+      }
+    });
+  },
+  { threshold: 0.4 }
+);
+
+sections.forEach((s) => sectionObserver.observe(s));
+
+// ─── CONTACT FORM ──────────────────────────────
+const contactForm = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
+
+contactForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById('contact-name').value.trim();
+  const email = document.getElementById('contact-email').value.trim();
+  const message = document.getElementById('contact-message').value.trim();
+
+  if (!name || !email || !message) {
+    showStatus('Lütfen tüm alanları doldurun.', 'error');
+    return;
   }
 
-  // Tetikleyici
-  icon.addEventListener("click", toggleMenu);
-  icon.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleMenu(); }
-  });
+  // Mailto fallback (no backend)
+  const subject = encodeURIComponent(`Portföy İletişim: ${name}`);
+  const body = encodeURIComponent(`Ad: ${name}\nEmail: ${email}\n\nMesaj:\n${message}`);
+  window.open(`mailto:muhammedsina47@outlook.com?subject=${subject}&body=${body}`, '_blank');
 
-  // Pencere boyutu büyürse (desktop) menüyü resetle
-  const mq = window.matchMedia("(min-width: 768px)");
-  mq.addEventListener?.("change", () => { if (mq.matches) closeMenu(); });
-})();
+  showStatus('Mesajınız e-posta uygulamasına yönlendirildi. Teşekkürler! 🎉', 'success');
+  contactForm.reset();
+});
+
+function showStatus(msg, type) {
+  formStatus.textContent = msg;
+  formStatus.className = `form-status ${type}`;
+  setTimeout(() => {
+    formStatus.className = 'form-status';
+  }, 5000);
+}
+
+// ─── SMOOTH SCROLL FOR ALL ANCHOR LINKS ────────
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener('click', (e) => {
+    const targetId = anchor.getAttribute('href');
+    if (targetId === '#') return;
+    const target = document.querySelector(targetId);
+    if (target) {
+      e.preventDefault();
+      const offset = 80; // Navbar height
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+
+// ─── ACTIVE NAV STYLE ───────────────────────────
+const style = document.createElement('style');
+style.textContent = `
+  .nav-link.active-nav {
+    color: var(--accent-primary) !important;
+  }
+  .nav-link.active-nav::after {
+    width: 100% !important;
+  }
+  #navbar {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+`;
+document.head.appendChild(style);
