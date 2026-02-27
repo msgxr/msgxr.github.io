@@ -92,7 +92,7 @@
           <a href="#projects" class="btn btn-primary">
             <i class="fa-solid fa-code"></i> Projelerimi Gör
           </a>
-          <a href="./assets/resume-example.pdf" class="btn btn-secondary" download>
+          <a href="./muhammedsinagun_cv_tr.pdf" class="btn btn-secondary" download>
             <i class="fa-solid fa-download"></i> CV İndir
           </a>
           <a href="#contact" class="btn btn-ghost">
@@ -356,11 +356,13 @@
       <div class="projects-grid">
 
         <!-- Project 1: TEKNOFEST -->
-        <div class="project-card featured reveal">
+        <div class="project-card featured reveal" onclick="window.open('https://github.com/msgxr','_blank')"
+          style="cursor:pointer">
           <div class="project-card-top">
             <div class="project-icon"><i class="fa-solid fa-brain"></i></div>
             <div class="project-links">
-              <a href="https://github.com/muhammedsinagun" target="_blank" rel="noopener" aria-label="GitHub">
+              <a href="https://github.com/msgxr" target="_blank" rel="noopener" aria-label="GitHub"
+                onclick="event.stopPropagation()">
                 <i class="fa-brands fa-github"></i>
               </a>
             </div>
@@ -368,9 +370,11 @@
           <div class="project-badge-featured">🏆 TEKNOFEST</div>
           <h3 class="project-title">Klinik Karar Destek Sistemi <span class="project-xai">(XAI)</span></h3>
           <p class="project-desc">
-            Takım kaptanı ve algoritma lideri olarak jinekolojide tıbbi görüntüleri analiz eden <strong>Açıklanabilir
-              Yapay Zeka (XAI)</strong> tabanlı klinik karar destek sistemi geliştirdim. Modelin kararlarını hekimlere
-            şeffaf biçimde açıklayan bir arayüz tasarladım.
+            Jinekolojik tıbbi görüntüleri derin öğrenmeyle analiz eden <strong>Açıklanabilir Yapay Zeka (XAI)</strong>
+            tabanlı klinik karar destek sistemi. Takım kaptanı ve baş algoritma geliştirici olarak SHAP değerleri
+            üzerinden
+            modelin tahmin gerekçelerini hekimlere görsel ve anlaşılır biçimde sunan bir Streamlit arayüzü tasarladım.
+            Sistem erken tanı sürecini hızlandırıp klinisyen güvenini artırmaya odaklanmaktadır.
           </p>
           <div class="project-tags">
             <span class="badge badge-blue">Python</span>
@@ -382,20 +386,22 @@
         </div>
 
         <!-- Project 2: BIST100 -->
-        <div class="project-card reveal">
+        <div class="project-card reveal" onclick="window.open('https://github.com/msgxr/bist-excel-app','_blank')"
+          style="cursor:pointer">
           <div class="project-card-top">
             <div class="project-icon"><i class="fa-solid fa-chart-line"></i></div>
             <div class="project-links">
-              <a href="https://github.com/muhammedsinagun/bist100-reporter" target="_blank" rel="noopener"
-                aria-label="GitHub">
+              <a href="https://github.com/msgxr/bist-excel-app" target="_blank" rel="noopener" aria-label="GitHub"
+                onclick="event.stopPropagation()">
                 <i class="fa-brands fa-github"></i>
               </a>
             </div>
           </div>
           <h3 class="project-title">BIST100 Finansal Raporlayıcı</h3>
           <p class="project-desc">
-            Borsa İstanbul verilerini entegre eden otomatik veri hattı. Binlerce kaydı işliyor ve manuel raporlama
-            süresini <span class="metric">%70 azalttı.</span>
+            BIST100 endeks verilerini günlük olarak çeken, PostgreSQL'de depolayan ve otomatik Excel/PDF raporu
+            üreten tam entegre ETL veri hattı. Günde binlerce kaydı hatasız işleyerek manuel raporlama süresini
+            <span class="metric">%70 azalttı</span> ve insan kaynaklı hata riskini sıfıra indirdi.
           </p>
           <div class="project-tags">
             <span class="badge badge-blue">Python</span>
@@ -406,20 +412,22 @@
         </div>
 
         <!-- Project 3: Excel DataManager -->
-        <div class="project-card reveal">
+        <div class="project-card reveal" onclick="window.open('https://github.com/msgxr/bist-excel-app','_blank')"
+          style="cursor:pointer">
           <div class="project-card-top">
             <div class="project-icon"><i class="fa-solid fa-table"></i></div>
             <div class="project-links">
-              <a href="https://github.com/muhammedsinagun/ExcelDataManager" target="_blank" rel="noopener"
-                aria-label="GitHub">
+              <a href="https://github.com/msgxr/bist-excel-app" target="_blank" rel="noopener" aria-label="GitHub"
+                onclick="event.stopPropagation()">
                 <i class="fa-brands fa-github"></i>
               </a>
             </div>
           </div>
           <h3 class="project-title">Excel DataManager</h3>
           <p class="project-desc">
-            Kurumsal Excel iş akışlarını web platformuna taşıyan uçtan uca otomasyon çözümü. Operasyonel yükü <span
-              class="metric">%60 azalttı.</span>
+            Kurumsal düzeyde Excel iş akışlarını tarayıcı tabanlı bir platforma taşıyan otomasyon çözümü.
+            Kullanıcılar dosya yükleyip tek tıkla işlenmiş raporu indirebiliyor. Tekrarlayan veri işleme
+            süreçlerini ortadan kaldırarak operasyonel iş yükünü <span class="metric">%60 azalttı.</span>
           </p>
           <div class="project-tags">
             <span class="badge badge-blue">Python</span>
@@ -430,19 +438,22 @@
         </div>
 
         <!-- Project 4: Stok Yönetim -->
-        <div class="project-card reveal">
+        <div class="project-card reveal"
+          onclick="window.open('https://github.com/msgxr/inventory-management-system','_blank')" style="cursor:pointer">
           <div class="project-card-top">
             <div class="project-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
             <div class="project-links">
-              <a href="https://github.com/muhammedsinagun" target="_blank" rel="noopener" aria-label="GitHub">
+              <a href="https://github.com/msgxr/inventory-management-system" target="_blank" rel="noopener"
+                aria-label="GitHub" onclick="event.stopPropagation()">
                 <i class="fa-brands fa-github"></i>
               </a>
             </div>
           </div>
           <h3 class="project-title">Stok Yönetim Sistemi</h3>
           <p class="project-desc">
-            SOLID prensipleriyle geliştirilmiş çok katmanlı, <strong>rol tabanlı</strong> kurumsal stok takip sistemi.
-            OOP ile temiz katmanlı mimari uygulandı.
+            SOLID prensiplerinin tamamı uygulanarak sıfırdan tasarlanan çok katmanlı kurumsal stok takip sistemi.
+            <strong>Rol tabanlı erişim kontrolü</strong> (Admin / Depo Sorumlusu / Kullanıcı) ile farklı yetki
+            seviyelerinde işlem yapılabiliyor. Modüler OOP mimarisi bakım maliyetini minimuma indirdi.
           </p>
           <div class="project-tags">
             <span class="badge badge-orange">Java</span>
@@ -453,19 +464,22 @@
         </div>
 
         <!-- Project 5: Araç Kiralama -->
-        <div class="project-card reveal">
+        <div class="project-card reveal" onclick="window.open('https://github.com/msgxr/OtoKiraSistemi','_blank')"
+          style="cursor:pointer">
           <div class="project-card-top">
             <div class="project-icon"><i class="fa-solid fa-car"></i></div>
             <div class="project-links">
-              <a href="https://github.com/muhammedsinagun" target="_blank" rel="noopener" aria-label="GitHub">
+              <a href="https://github.com/msgxr/OtoKiraSistemi" target="_blank" rel="noopener" aria-label="GitHub"
+                onclick="event.stopPropagation()">
                 <i class="fa-brands fa-github"></i>
               </a>
             </div>
           </div>
           <h3 class="project-title">Araç Kiralama Platformu</h3>
           <p class="project-desc">
-            Temiz <strong>MVC mimarisi</strong> ile müşteri yönetimi ve araç takibi yapan tam özellikli kiralama
-            platformu.
+            Temiz <strong>MVC mimarisi</strong> üzerine inşa edilmiş, araç envanteri yönetimi, müşteri kaydı ve
+            kiralama süreçlerini tek çatı altında toplayan kurumsal platform. Veri erişim ve iş mantığı katmanları
+            birbirinden bağımsız tutularak uzun vadeli bakım kolaylığı sağlandı.
           </p>
           <div class="project-tags">
             <span class="badge badge-orange">Java</span>
@@ -498,7 +512,7 @@
             <div class="timeline-header">
               <div>
                 <h3 class="timeline-title">ArelTech — Yazılım Kulübü</h3>
-                <span class="timeline-sub">Çekirdek Üye / Teknik Lider / Sosyal Medya Yöneticisi</span>
+                <span class="timeline-sub">Genel Koordinatör &amp; Teknik Lider</span>
               </div>
               <span class="timeline-date">2023 — Devam Ediyor</span>
             </div>
@@ -627,8 +641,16 @@
           </div>
         </div>
 
-        <!-- Contact Form -->
-        <form class="contact-form reveal" id="contact-form">
+        <!-- Contact Form — FormSubmit.co (gerçek e-posta gönderimi) -->
+        <form class="contact-form reveal" action="https://formsubmit.co/muhammedsina47@outlook.com" method="POST">
+          <!-- Yapılandırma (gizli alanlar) -->
+          <input type="hidden" name="_subject" value="📬 Portföy Sitesi — Yeni Mesaj" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_next" value="https://msgxr.github.io/#contact" />
+          <input type="hidden" name="_autoresponse"
+            value="Merhaba! Mesajınız alındı, en kısa sürede dönüş yapacağım. Teşekkürler — Muhammed Sina Gün" />
+
           <div class="form-group">
             <label for="contact-name">Adınız</label>
             <input type="text" id="contact-name" name="name" placeholder="Adınızı girin..." required />
@@ -645,7 +667,6 @@
           <button type="submit" class="btn btn-primary btn-full">
             <i class="fa-solid fa-paper-plane"></i> Mesaj Gönder
           </button>
-          <div id="form-status" class="form-status"></div>
         </form>
       </div>
     </div>
