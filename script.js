@@ -160,41 +160,25 @@ const sectionObserver = new IntersectionObserver(
 
 sections.forEach((s) => sectionObserver.observe(s));
 
-// ─── CONTACT FORM — Netlify Function ──────────
-async function handleContactForm(e) {
+// ─── CONTACT FORM — Web3Forms ─────────────────
+document.getElementById('contact-form').addEventListener('submit', async function (e) {
   e.preventDefault();
-
-  const name = document.getElementById('contact-name').value.trim();
-  const email = document.getElementById('contact-email').value.trim();
-  const message = document.getElementById('contact-message').value.trim();
   const btn = document.getElementById('submit-btn');
   const btnText = document.getElementById('submit-text');
-  const status = document.getElementById('form-status');
-
-  if (!name || !email || !message) {
-    showFormStatus('Lütfen tüm alanları doldurun.', 'error');
-    return;
-  }
-
-  // Loading state
   btn.disabled = true;
   btnText.textContent = 'Gönderiliyor...';
   btn.style.opacity = '0.7';
-
   try {
-    const res = await fetch('/.netlify/functions/contact', {
+    const res = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, message }),
+      body: new FormData(this),
     });
-
     const data = await res.json();
-
-    if (res.ok && data.success) {
+    if (data.success) {
       showFormStatus('✅ Mesajınız gönderildi! En kısa sürede dönüş yapacağım.', 'success');
-      e.target.reset();
+      this.reset();
     } else {
-      showFormStatus('❌ ' + (data.error || 'Bir hata oluştu. Lütfen tekrar deneyin.'), 'error');
+      showFormStatus('❌ ' + (data.message || 'Bir hata oluştu. Lütfen tekrar deneyin.'), 'error');
     }
   } catch (err) {
     showFormStatus('❌ Bağlantı hatası. Lütfen tekrar deneyin.', 'error');
@@ -203,7 +187,7 @@ async function handleContactForm(e) {
     btnText.textContent = 'Mesaj Gönder';
     btn.style.opacity = '1';
   }
-}
+});
 
 function showFormStatus(msg, type) {
   const status = document.getElementById('form-status');

@@ -641,8 +641,13 @@
           </div>
         </div>
 
-        <!-- Contact Form — Netlify Serverless Function -->
-        <form class="contact-form reveal" id="contact-form" onsubmit="handleContactForm(event)">
+        <!-- Contact Form — Web3Forms -->
+        <form class="contact-form reveal" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+          <input type="hidden" name="subject" value="📬 Portföy Sitesi — Yeni Mesaj" />
+          <input type="hidden" name="redirect" value="false" />
+          <input type="checkbox" name="botcheck" style="display:none" />
+
           <div class="form-group">
             <label for="contact-name">Adınız</label>
             <input type="text" id="contact-name" name="name" placeholder="Adınızı girin..." required />
