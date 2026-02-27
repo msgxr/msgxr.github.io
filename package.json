@@ -1,8 +1,5 @@
 {
-  "name": "msgxr-portfolio",
-  "version": "1.0.0",
-  "description": "Muhammed Sina Gün Portfolio",
-  "dependencies": {
-    "nodemailer": "^6.9.9"
-  }
+    "name": "msgxr-portfolio",
+    "version": "1.0.0",
+    "description": "Muhammed Sina Gün Portfolio — Netlify Functions"
 }
