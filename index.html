@@ -641,16 +641,8 @@
           </div>
         </div>
 
-        <!-- Contact Form — FormSubmit.co (gerçek e-posta gönderimi) -->
-        <form class="contact-form reveal" action="https://formsubmit.co/muhammedsina47@outlook.com" method="POST">
-          <!-- Yapılandırma (gizli alanlar) -->
-          <input type="hidden" name="_subject" value="📬 Portföy Sitesi — Yeni Mesaj" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_next" value="https://msgxr.github.io/#contact" />
-          <input type="hidden" name="_autoresponse"
-            value="Merhaba! Mesajınız alındı, en kısa sürede dönüş yapacağım. Teşekkürler — Muhammed Sina Gün" />
-
+        <!-- Contact Form — Netlify Serverless Function -->
+        <form class="contact-form reveal" id="contact-form" onsubmit="handleContactForm(event)">
           <div class="form-group">
             <label for="contact-name">Adınız</label>
             <input type="text" id="contact-name" name="name" placeholder="Adınızı girin..." required />
@@ -664,9 +656,10 @@
             <textarea id="contact-message" name="message" rows="5" placeholder="Mesajınızı yazın..."
               required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary btn-full">
-            <i class="fa-solid fa-paper-plane"></i> Mesaj Gönder
+          <button type="submit" class="btn btn-primary btn-full" id="submit-btn">
+            <i class="fa-solid fa-paper-plane"></i> <span id="submit-text">Mesaj Gönder</span>
           </button>
+          <div id="form-status" class="form-status"></div>
         </form>
       </div>
     </div>

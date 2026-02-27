@@ -160,37 +160,56 @@ const sectionObserver = new IntersectionObserver(
 
 sections.forEach((s) => sectionObserver.observe(s));
 
-// ─── CONTACT FORM ──────────────────────────────
-const contactForm = document.getElementById('contact-form');
-const formStatus = document.getElementById('form-status');
-
-contactForm.addEventListener('submit', (e) => {
+// ─── CONTACT FORM — Netlify Function ──────────
+async function handleContactForm(e) {
   e.preventDefault();
 
   const name = document.getElementById('contact-name').value.trim();
   const email = document.getElementById('contact-email').value.trim();
   const message = document.getElementById('contact-message').value.trim();
+  const btn = document.getElementById('submit-btn');
+  const btnText = document.getElementById('submit-text');
+  const status = document.getElementById('form-status');
 
   if (!name || !email || !message) {
-    showStatus('Lütfen tüm alanları doldurun.', 'error');
+    showFormStatus('Lütfen tüm alanları doldurun.', 'error');
     return;
   }
 
-  // Mailto fallback (no backend)
-  const subject = encodeURIComponent(`Portföy İletişim: ${name}`);
-  const body = encodeURIComponent(`Ad: ${name}\nEmail: ${email}\n\nMesaj:\n${message}`);
-  window.open(`mailto:muhammedsina47@outlook.com?subject=${subject}&body=${body}`, '_blank');
+  // Loading state
+  btn.disabled = true;
+  btnText.textContent = 'Gönderiliyor...';
+  btn.style.opacity = '0.7';
 
-  showStatus('Mesajınız e-posta uygulamasına yönlendirildi. Teşekkürler! 🎉', 'success');
-  contactForm.reset();
-});
+  try {
+    const res = await fetch('/.netlify/functions/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, message }),
+    });
 
-function showStatus(msg, type) {
-  formStatus.textContent = msg;
-  formStatus.className = `form-status ${type}`;
-  setTimeout(() => {
-    formStatus.className = 'form-status';
-  }, 5000);
+    const data = await res.json();
+
+    if (res.ok && data.success) {
+      showFormStatus('✅ Mesajınız gönderildi! En kısa sürede dönüş yapacağım.', 'success');
+      e.target.reset();
+    } else {
+      showFormStatus('❌ ' + (data.error || 'Bir hata oluştu. Lütfen tekrar deneyin.'), 'error');
+    }
+  } catch (err) {
+    showFormStatus('❌ Bağlantı hatası. Lütfen tekrar deneyin.', 'error');
+  } finally {
+    btn.disabled = false;
+    btnText.textContent = 'Mesaj Gönder';
+    btn.style.opacity = '1';
+  }
+}
+
+function showFormStatus(msg, type) {
+  const status = document.getElementById('form-status');
+  status.textContent = msg;
+  status.className = `form-status ${type}`;
+  setTimeout(() => { status.className = 'form-status'; }, 6000);
 }
 
 // ─── SMOOTH SCROLL FOR ALL ANCHOR LINKS ────────
