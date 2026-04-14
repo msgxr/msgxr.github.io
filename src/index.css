@@ -1,0 +1,878 @@
+/* ============================================
+   TASARIM SİSTEMİ — Akademik Kişisel Site
+   Muhammed Sina Gün
+   ============================================ */
+
+/* ─── CSS Değişkenleri ───────────────────────── */
+:root {
+  /* Renkler */
+  --bg-primary: #FAFAFA;
+  --bg-surface: #FFFFFF;
+  --bg-subtle: #F5F5F7;
+  --bg-accent-subtle: #EEF2F7;
+
+  --text-primary: #1A1A2E;
+  --text-secondary: #4A4A68;
+  --text-tertiary: #8A8AA3;
+
+  --accent: #1B3A5C;
+  --accent-hover: #264D73;
+  --accent-light: #E8EFF6;
+
+  --border: #E2E2E8;
+  --border-subtle: #EFEFEF;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+  /* Tipografi */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Aralık */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+
+  /* Düzen */
+  --container-max: 800px;
+  --container-wide: 960px;
+  --navbar-height: 64px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+/* ─── Sıfırlama ve Temel ────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+}
+
+/* ─── Tipografi ──────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: 2.75rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 2rem;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+h4 {
+  font-size: 1.0625rem;
+}
+
+p {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ─── Düzen ──────────────────────────────────── */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.container--wide {
+  max-width: var(--container-wide);
+}
+
+section {
+  padding: var(--space-4xl) 0;
+}
+
+section:nth-child(even) {
+  background-color: var(--bg-subtle);
+}
+
+/* ─── Butonlar ───────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.btn--primary {
+  background-color: var(--accent);
+  color: #FFFFFF;
+}
+
+.btn--primary:hover {
+  background-color: var(--accent-hover);
+  color: #FFFFFF;
+}
+
+.btn--secondary {
+  background-color: transparent;
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+}
+
+.btn--secondary:hover {
+  background-color: var(--accent);
+  color: #FFFFFF;
+}
+
+.btn--ghost {
+  background-color: transparent;
+  color: var(--text-secondary);
+  padding: 12px 16px;
+}
+
+.btn--ghost:hover {
+  color: var(--accent);
+}
+
+/* ─── Bölüm Başlığı ─────────────────────────── */
+.section-header {
+  margin-bottom: var(--space-2xl);
+}
+
+.section-label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-sm);
+}
+
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ─── Navbar ─────────────────────────────────── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--navbar-height);
+  background-color: rgba(250, 250, 250, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1000;
+  transition: box-shadow 0.3s ease;
+}
+
+.navbar--scrolled {
+  box-shadow: 0 1px 0 var(--border);
+}
+
+.navbar__inner {
+  max-width: var(--container-wide);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar__name {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.navbar__name:hover {
+  color: var(--accent);
+}
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  list-style: none;
+}
+
+.navbar__link {
+  font-size: 0.9375rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+  color: var(--text-primary);
+}
+
+.navbar__link--active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background-color: var(--accent);
+}
+
+/* Hamburger */
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.navbar__hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.navbar__hamburger--open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navbar__hamburger--open span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar__hamburger--open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobil menü */
+.navbar__mobile {
+  display: none;
+  position: fixed;
+  top: var(--navbar-height);
+  left: 0;
+  right: 0;
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  padding: var(--space-lg);
+  z-index: 999;
+}
+
+.navbar__mobile--open {
+  display: block;
+}
+
+.navbar__mobile-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.navbar__mobile-link {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: var(--space-sm) 0;
+}
+
+.navbar__mobile-link:hover {
+  color: var(--text-primary);
+}
+
+/* ─── Hero ───────────────────────────────────── */
+.hero {
+  padding-top: calc(var(--navbar-height) + var(--space-4xl));
+  padding-bottom: var(--space-4xl);
+  background-color: var(--bg-primary);
+}
+
+.hero__content {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.hero__name {
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+  letter-spacing: -0.02em;
+}
+
+.hero__title {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-lg);
+}
+
+.hero__summary {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin-bottom: var(--space-xl);
+}
+
+.hero__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+/* ─── Hakkımda ───────────────────────────────── */
+.about__text {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.about__text p {
+  margin-bottom: 1.25rem;
+}
+
+/* ─── İlgi Alanları Izgarası ─────────────────── */
+.interest-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+
+.interest-card {
+  padding: var(--space-lg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-surface);
+  transition: border-color 0.2s ease;
+}
+
+.interest-card:hover {
+  border-color: var(--accent);
+}
+
+.interest-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background-color: var(--accent-light);
+  color: var(--accent);
+  margin-bottom: var(--space-md);
+}
+
+.interest-card__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.interest-card__desc {
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* ─── Proje Kartları ─────────────────────────── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+.project-card {
+  padding: var(--space-lg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-surface);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-sm);
+}
+
+.project-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+
+.project-card__title-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.project-card__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.project-card__badge {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--accent);
+  background-color: var(--accent-light);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.project-card__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--text-tertiary);
+  border-radius: var(--radius-sm);
+  transition: color 0.2s ease, background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.project-card__link:hover {
+  color: var(--accent);
+  background-color: var(--accent-light);
+}
+
+.project-card__desc {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: var(--space-md);
+}
+
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.project-card__tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  background-color: var(--bg-subtle);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+}
+
+/* ─── Zaman Çizelgesi ────────────────────────── */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.timeline-item {
+  padding: var(--space-lg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-surface);
+}
+
+.timeline-item__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--space-sm);
+  gap: var(--space-md);
+}
+
+.timeline-item__title {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.timeline-item__subtitle {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.timeline-item__date {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.timeline-item__list {
+  list-style: none;
+  margin-top: var(--space-md);
+}
+
+.timeline-item__list li {
+  position: relative;
+  padding-left: var(--space-lg);
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-sm);
+}
+
+.timeline-item__list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--text-tertiary);
+}
+
+/* ─── Eğitim ─────────────────────────────────── */
+.education-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.education-card {
+  padding: var(--space-lg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-surface);
+}
+
+.education-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.education-card__title {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.education-card__subtitle {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.education-card__date {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.education-card__detail {
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  margin-top: var(--space-sm);
+}
+
+.cert-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.cert-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) var(--space-lg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-primary);
+}
+
+.cert-item__name {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.cert-item__year {
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
+}
+
+/* ─── CV Bölümü ──────────────────────────────── */
+.cv-section {
+  text-align: center;
+  padding: var(--space-3xl) 0;
+}
+
+.cv-section__text {
+  font-size: 1.0625rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-lg);
+}
+
+.cv-section__date {
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
+  margin-top: var(--space-md);
+}
+
+/* ─── İletişim ───────────────────────────────── */
+.contact__text {
+  font-size: 1.0625rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+}
+
+.contact__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.contact__link-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact__link-item:hover {
+  color: var(--accent);
+}
+
+.contact__link-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-subtle);
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.contact__link-item:hover .contact__link-icon {
+  background-color: var(--accent-light);
+  color: var(--accent);
+}
+
+/* ─── Altbilgi ───────────────────────────────── */
+.footer {
+  padding: var(--space-xl) 0;
+  border-top: 1px solid var(--border);
+  background-color: var(--bg-primary);
+}
+
+.footer__inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer__text {
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
+}
+
+.footer__links {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.footer__link {
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer__link:hover {
+  color: var(--text-primary);
+}
+
+/* ─── Duyarlı Tasarım ────────────────────────── */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  section {
+    padding: var(--space-3xl) 0;
+  }
+
+  .hero {
+    padding-top: calc(var(--navbar-height) + var(--space-3xl));
+    padding-bottom: var(--space-3xl);
+  }
+
+  .hero__name {
+    font-size: 2rem;
+  }
+
+  .hero__title {
+    font-size: 1.0625rem;
+  }
+
+  .hero__summary {
+    font-size: 1rem;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Navbar mobil */
+  .navbar__links {
+    display: none;
+  }
+
+  .navbar__hamburger {
+    display: flex;
+  }
+
+  /* İlgi alanları Izgarası */
+  .interest-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Zaman çizelgesi başlık */
+  .timeline-item__header {
+    flex-direction: column;
+  }
+
+  /* Eğitim kartı başlık */
+  .education-card__header {
+    flex-direction: column;
+  }
+
+  /* Altbilgi */
+  .footer__inner {
+    flex-direction: column;
+    gap: var(--space-md);
+    text-align: center;
+  }
+
+  /* Sertifika öğesi */
+  .cert-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .interest-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1025px) {
+  .interest-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ─── Erişilebilirlik ────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Ekran dışı metin */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
